@@ -21,7 +21,7 @@ from groq import Groq
 from sentence_transformers import SentenceTransformer
 
 TRANSCRIPTS_DIR = "childress_transcripts"
-MODEL = "llama-3.1-70b-versatile"
+MODEL = "llama-3.3-70b-versatile"
 EMBED_MODEL = "all-MiniLM-L6-v2"
 TOP_K = 3
 
