@@ -23,7 +23,7 @@ from sentence_transformers import SentenceTransformer
 TRANSCRIPTS_DIR = "childress_transcripts"
 MODEL = "llama-3.1-70b-versatile"
 EMBED_MODEL = "all-MiniLM-L6-v2"
-TOP_K = 5
+TOP_K = 3
 
 
 # ── Load and index transcripts ─────────────────────────────────────────────
@@ -92,7 +92,7 @@ def ask_groq(question: str, context_chunks: list[dict], history: list) -> str:
             seen.add(m["title"])
             context_text += f"\n\n---\nVideo: {m['title']} ({m['date']})\nURL: {m['url']}\n"
         context_text += chunk["document"] + "\n"
-
+    context_text = context_text[:6000]
     system_prompt = f"""You are a helpful assistant that answers questions based exclusively on transcripts from Dr. Craig Childress, a clinical psychologist specializing in parental alienation and attachment-based family therapy.
 
 Answer clearly and accurately using only the transcript content provided. If the answer is not in the transcripts, say so honestly. Always cite which video(s) your answer comes from, including the URL.
