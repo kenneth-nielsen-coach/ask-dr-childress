@@ -144,7 +144,10 @@ if question := st.chat_input("Ask a question about Dr. Childress's work..."):
 
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            answer = ask_groq(question, results, st.session_state.messages)
+            try:
+                answer = ask_groq(question, results, st.session_state.messages)
+            except Exception as e:
+                answer = f"**Error:** {e}"
         st.markdown(answer)
 
     st.session_state.messages.append({"role": "assistant", "content": answer})
