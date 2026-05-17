@@ -20,10 +20,13 @@ import streamlit as st
 from groq import Groq
 from sentence_transformers import SentenceTransformer
 
-TRANSCRIPTS_DIR = "childress_transcripts"
-MODEL = "llama-3.3-70b-versatile"
+TRANSCRIPTS_DIRS = [
+    "childress_transcripts",   # YouTube transcripts
+    "childress_blog",          # Blog posts
+]
+MODEL = "llama-3.1-70b-versatile"
 EMBED_MODEL = "all-MiniLM-L6-v2"
-TOP_K = 3
+TOP_K = 5
 
 
 # ── Load and index transcripts ─────────────────────────────────────────────
@@ -33,7 +36,9 @@ def build_index():
     embedder = SentenceTransformer(EMBED_MODEL)
     chunks, metadatas = [], []
 
-    files = glob.glob(f"{TRANSCRIPTS_DIR}/**/*.md", recursive=True)
+    files = []
+    for d in TRANSCRIPTS_DIRS:
+        files += glob.glob(f"{d}/**/*.md", recursive=True)
     for path in files:
         text = open(path, encoding="utf-8", errors="replace").read()
 
@@ -48,6 +53,8 @@ def build_index():
                 date = line.replace("**Date:**", "").strip()
             elif line.startswith("**Playlist:**"):
                 playlist = line.replace("**Playlist:**", "").strip()
+            elif line.startswith("**Category:**"):
+                playlist = line.replace("**Category:**", "").strip()  # reuse playlist field
 
         body = text.split("---\n", 1)[-1].strip()
         for chunk in chunk_text(body):
@@ -92,12 +99,12 @@ def ask_groq(question: str, context_chunks: list[dict], history: list) -> str:
             seen.add(m["title"])
             context_text += f"\n\n---\nVideo: {m['title']} ({m['date']})\nURL: {m['url']}\n"
         context_text += chunk["document"] + "\n"
-    context_text = context_text[:6000]
-    system_prompt = f"""You are a helpful assistant that answers questions based exclusively on transcripts from Dr. Craig Childress, a clinical psychologist specializing in parental alienation and attachment-based family therapy.
 
-Answer clearly and accurately using only the transcript content provided. If the answer is not in the transcripts, say so honestly. Always cite which video(s) your answer comes from, including the URL.
+    system_prompt = f"""You are a helpful assistant that answers questions based exclusively on content from Dr. Craig Childress, a clinical psychologist specializing in parental alienation and attachment-based family therapy.
 
-TRANSCRIPT CONTEXT:
+Your sources include YouTube video transcripts and blog posts. Answer clearly and accurately using only the content provided. If the answer is not in the sources, say so honestly. Always cite which video or blog post your answer comes from, including the URL.
+
+SOURCE CONTENT:
 {context_text}
 """
 
@@ -122,10 +129,11 @@ st.title("🧠 Dr. Childress – Video Q&A")
 st.caption("Ask any question and get answers drawn from Dr. Childress's video transcripts.")
 
 embedder, embeddings, chunks, metadatas, file_count = build_index()
-st.sidebar.success(f"✅ {file_count} transcript files indexed")
+st.sidebar.success(f"✅ {file_count} files indexed")
 st.sidebar.markdown(
-    "**About**\n\nAnswers are based on transcripts from "
-    "[Dr. Craig Childress](https://www.youtube.com/@dr.c.a.childress673)'s YouTube channel."
+    "**Sources**\n\n"
+    "- 📺 [Dr. Childress YouTube](https://www.youtube.com/@dr.c.a.childress673)\n"
+    "- 📝 [Dr. Childress Blog](https://drcraigchildressblog.com)\n"
 )
 
 if "messages" not in st.session_state:
@@ -144,10 +152,7 @@ if question := st.chat_input("Ask a question about Dr. Childress's work..."):
 
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            try:
-                answer = ask_groq(question, results, st.session_state.messages)
-            except Exception as e:
-                answer = f"**Error:** {e}"
+            answer = ask_groq(question, results, st.session_state.messages)
         st.markdown(answer)
 
     st.session_state.messages.append({"role": "assistant", "content": answer})
