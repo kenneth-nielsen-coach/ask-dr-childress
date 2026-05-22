@@ -1,11 +1,16 @@
 Her er den helt gratis løsning. Vi bruger:
-DelVærktøjPrisLLMGroq (Llama 3.1 gratis API)GratisHostingStreamlit CloudGratisSøgningChromaDB i hukommelsenGratisKodeGitHub repoGratis
+Del	Værktøj				Pris	
+LLM	Groq (Llama 3.1 gratis API)
+Gratis	Hosting	Streamlit Cloud		Gratis
+Søgning	ChromaDB i hukommelsen		Gratis
+Kode	GitHub repo			Gratis
 
 Trin-for-trin
 1. Hent Groq API-nøgle
 Gå til console.groq.com → opret konto → kopier din API key.
 - groq ask-dorcy-pruter api key: - until 2026.08.09
   se secrets.txt fil 
+
 
 2. Opret GitHub repo
 Opret et nyt (gratis) repo på GitHub, og læg dine transkriptionsfiler ind sådan:
@@ -44,4 +49,6 @@ Stille spørgsmål på engelsk
 Få svar med kildehenvisning til hvilke videoer svaret kommer fra
 
 
-Eneste begrænsning: Streamlit Cloud gemmer ikke indeksering mellem restarts, så den bruger ~30 sek på at indeksere ved første load. Det sker automatisk i baggrunden mens siden åbner
+Eneste begrænsning: Streamlit Cloud gemmer ikke indeksering mellem restarts, 
+så den bruger ~30 sek på at indeksere ved første load. Det sker automatisk 
+i baggrunden mens siden åbner
