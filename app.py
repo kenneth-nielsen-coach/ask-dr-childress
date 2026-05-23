@@ -24,10 +24,10 @@ TRANSCRIPTS_DIRS = [
     "childress_transcripts",   # YouTube transcripts
     "childress_blog",          # Blog posts
 ]
-MODEL = "llama-3.1-70b-versatile"
+MODEL = "llama-3.3-70b-versatile"   # FIX: llama-3.1-70b-versatile is deprecated on Groq
 EMBED_MODEL = "all-MiniLM-L6-v2"
 TOP_K = 5
-
+MAX_CONTEXT_CHARS = 6000            # FIX: cap injected transcript text to avoid token limit errors
 
 # ── Load and index transcripts ─────────────────────────────────────────────
 
@@ -39,6 +39,7 @@ def build_index():
     files = []
     for d in TRANSCRIPTS_DIRS:
         files += glob.glob(f"{d}/**/*.md", recursive=True)
+
     for path in files:
         text = open(path, encoding="utf-8", errors="replace").read()
 
@@ -54,7 +55,7 @@ def build_index():
             elif line.startswith("**Playlist:**"):
                 playlist = line.replace("**Playlist:**", "").strip()
             elif line.startswith("**Category:**"):
-                playlist = line.replace("**Category:**", "").strip()  # reuse playlist field
+                playlist = line.replace("**Category:**", "").strip()
 
         body = text.split("---\n", 1)[-1].strip()
         for chunk in chunk_text(body):
@@ -75,7 +76,6 @@ def chunk_text(text: str, size: int = 800, overlap: int = 100) -> list[str]:
 
 def search(query: str, embedder, embeddings, chunks, metadatas) -> list[dict]:
     q_vec = embedder.encode([query])
-    # Cosine similarity
     norms = np.linalg.norm(embeddings, axis=1) * np.linalg.norm(q_vec)
     scores = (embeddings @ q_vec.T).flatten() / np.maximum(norms, 1e-9)
     top_idx = np.argsort(scores)[::-1][:TOP_K]
@@ -91,6 +91,7 @@ def ask_groq(question: str, context_chunks: list[dict], history: list) -> str:
 
     client = Groq(api_key=api_key)
 
+    # Build context text with a hard character cap to prevent token limit errors
     context_text = ""
     seen = set()
     for chunk in context_chunks:
@@ -99,6 +100,9 @@ def ask_groq(question: str, context_chunks: list[dict], history: list) -> str:
             seen.add(m["title"])
             context_text += f"\n\n---\nVideo: {m['title']} ({m['date']})\nURL: {m['url']}\n"
         context_text += chunk["document"] + "\n"
+        if len(context_text) >= MAX_CONTEXT_CHARS:
+            context_text = context_text[:MAX_CONTEXT_CHARS] + "\n[...truncated for length...]"
+            break
 
     system_prompt = f"""You are a helpful assistant that answers questions based exclusively on content from Dr. Craig Childress, a clinical psychologist specializing in parental alienation and attachment-based family therapy.
 
@@ -108,9 +112,16 @@ SOURCE CONTENT:
 {context_text}
 """
 
+    # Build message list: system prompt + last 6 history turns + current question
     messages = [{"role": "system", "content": system_prompt}]
+
     for msg in history[-6:]:
-        messages.append({"role": msg["role"], "content": msg["content"]})
+        # FIX: skip any messages with missing/empty content to avoid BadRequestError
+        role = msg.get("role")
+        content = msg.get("content")
+        if role in ("user", "assistant") and isinstance(content, str) and content.strip():
+            messages.append({"role": role, "content": content})
+
     messages.append({"role": "user", "content": question})
 
     response = client.chat.completions.create(
