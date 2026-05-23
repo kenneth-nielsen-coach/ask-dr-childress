@@ -108,6 +108,8 @@ def ask_groq(question: str, context_chunks: list[dict], history: list) -> str:
 
 Your sources include YouTube video transcripts and blog posts. Answer clearly and accurately using only the content provided. If the answer is not in the sources, say so honestly. Always cite which video or blog post your answer comes from, including the URL.
 
+LANGUAGE RULE: Detect the language of the user's question and respond in that same language. The source material is in English — translate your answer into the user's language while keeping any cited titles and URLs in their original English form.
+
 SOURCE CONTENT:
 {context_text}
 """
@@ -137,7 +139,7 @@ SOURCE CONTENT:
 
 st.set_page_config(page_title="Dr. Childress Q&A", page_icon="🧠", layout="centered")
 st.title("🧠 Dr. Childress – Video Q&A")
-st.caption("Ask any question and get answers drawn from Dr. Childress's video transcripts.")
+st.caption("Ask any question in your language and get answers drawn from Dr. Childress's video transcripts.")
 
 embedder, embeddings, chunks, metadatas, file_count = build_index()
 st.sidebar.success(f"✅ {file_count} files indexed")
@@ -154,7 +156,7 @@ for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-if question := st.chat_input("Ask a question about Dr. Childress's work..."):
+if question := st.chat_input("Ask a question in any language / Pregunta en cualquier idioma / Posez une question dans n'importe quelle langue..."):
     st.session_state.messages.append({"role": "user", "content": question})
     with st.chat_message("user"):
         st.markdown(question)
