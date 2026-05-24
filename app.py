@@ -25,6 +25,7 @@ from sentence_transformers import SentenceTransformer
 TRANSCRIPTS_DIRS = [
     "childress_transcripts",   # YouTube transcripts
     "childress_blog",          # Blog posts
+    "childress_substack",      # Substack posts
 ]
 MODEL = "llama-3.3-70b-versatile"   # llama-3.1-70b-versatile is deprecated on Groq
 EMBED_MODEL = "all-MiniLM-L6-v2"
@@ -58,6 +59,8 @@ def build_index():
                 playlist = line.replace("**Playlist:**", "").strip()
             elif line.startswith("**Category:**"):
                 playlist = line.replace("**Category:**", "").strip()
+            elif line.startswith("**Section:**"):
+                playlist = line.replace("**Section:**", "").strip()
 
         body = text.split("---\n", 1)[-1].strip()
         for chunk in chunk_text(body):
@@ -110,7 +113,7 @@ def ask_groq(question: str, context_chunks: list[dict], history: list) -> str:
 
     system_prompt = f"""You are a helpful assistant that answers questions based exclusively on content from Dr. Craig Childress, a clinical psychologist specializing in parental alienation and attachment-based family therapy.
 
-Your sources include YouTube video transcripts (with timestamps) and blog posts. Answer clearly and accurately using only the content provided. If the answer is not in the sources, say so honestly.
+Your sources include YouTube video transcripts (with timestamps), blog posts, and Substack articles. Answer clearly and accurately using only the content provided. If the answer is not in the sources, say so honestly.
 
 When citing a video, always include the timestamp link in the format [MM:SS](url) so the user can jump directly to that moment. If multiple timestamps are relevant, include them all.
 
@@ -149,7 +152,7 @@ def read_readme() -> tuple[str, str]:
     Falls back to defaults if README.md is missing or fields not found.
     """
     default_title   = "🧠 Dr. Childress – Q&A"
-    default_caption = "Ask any question in your language and get answers drawn from Dr. Childress's video transcripts and his blog posts.."
+    default_caption = "Ask any question in your language and get answers drawn from Dr. Childress's video transcripts and his blog posts."
     try:
         readme = Path("README.md").read_text(encoding="utf-8")
         title_match   = re.search(r"^#\s+(.+)$", readme, re.MULTILINE)
@@ -180,6 +183,7 @@ st.sidebar.markdown(
     "**Sources**\n\n"
     "- 📺 [Dr. Childress YouTube](https://www.youtube.com/@dr.c.a.childress673)\n"
     "- 📝 [Dr. Childress Blog](https://drcraigchildressblog.com)\n"
+    "- 📧 [Dr. Childress Substack](https://drcachildress.substack.com)\n"
 )
 
 if "messages" not in st.session_state:
