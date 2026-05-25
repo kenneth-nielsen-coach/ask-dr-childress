@@ -26,6 +26,7 @@ TRANSCRIPTS_DIRS = [
     "childress_transcripts",   # YouTube transcripts
     "childress_blog",          # Blog posts
     "childress_substack",      # Substack posts
+    "kenneth_tests"            # Kenneth's test folder for new files before adding to main folders
 ]
 MODEL = "claude-sonnet-4-20250514"
 EMBED_MODEL = "all-MiniLM-L6-v2"
