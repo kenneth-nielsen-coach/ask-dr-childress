@@ -178,6 +178,7 @@ st.sidebar.markdown(
     "- 📺 [Dr. Childress YouTube](https://www.youtube.com/@dr.c.a.childress673)\n"
     "- 📝 [Dr. Childress Blog](https://drcraigchildressblog.com)\n"
     "- 📧 [Dr. Childress Substack](https://drcachildress.substack.com)\n"
+    "- 🧪 Kenneth's Test Folder (for new files before adding to main folders)"
 )
 
 if "messages" not in st.session_state:
