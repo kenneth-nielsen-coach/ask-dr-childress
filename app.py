@@ -2,13 +2,13 @@
 Dr. Childress Transcript Chatbot
 ---------------------------------
 Free stack:
-  - Groq API (free) for LLM
+  - Anthropic Claude API for LLM
   - sentence-transformers (free) for embeddings
   - numpy cosine similarity (no ChromaDB needed)
   - Streamlit Cloud (free) for hosting
 
 Setup:
-  1. Add GROQ_API_KEY to Streamlit Cloud secrets
+  1. Add ANTHROPIC_API_KEY to Streamlit Cloud secrets
   2. Put transcript .md files in ./childress_transcripts/ (subfolders OK)
   3. Deploy to Streamlit Cloud
 """
@@ -16,9 +16,9 @@ Setup:
 import os
 import re
 import glob
+import anthropic
 import numpy as np
 import streamlit as st
-from groq import Groq
 from pathlib import Path
 from sentence_transformers import SentenceTransformer
 
@@ -27,10 +27,10 @@ TRANSCRIPTS_DIRS = [
     "childress_blog",          # Blog posts
     "childress_substack",      # Substack posts
 ]
-MODEL = "llama-3.3-70b-versatile"   # llama-3.1-70b-versatile is deprecated on Groq
+MODEL = "claude-sonnet-4-20250514"
 EMBED_MODEL = "all-MiniLM-L6-v2"
 TOP_K = 5
-MAX_CONTEXT_CHARS = 6000            # cap injected transcript text to avoid token limit errors
+MAX_CONTEXT_CHARS = 6000
 
 
 # ── Load and index transcripts ─────────────────────────────────────────────
@@ -89,14 +89,14 @@ def search(query: str, embedder, embeddings, chunks, metadatas) -> list[dict]:
     return [{"document": chunks[i], "metadata": metadatas[i], "score": scores[i]} for i in top_idx]
 
 
-# ── Groq LLM call ──────────────────────────────────────────────────────────
+# ── Claude API call ────────────────────────────────────────────────────────
 
-def ask_groq(question: str, context_chunks: list[dict], history: list) -> str:
-    api_key = st.secrets.get("GROQ_API_KEY") or os.environ.get("GROQ_API_KEY")
+def ask_claude(question: str, context_chunks: list[dict], history: list) -> str:
+    api_key = st.secrets.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
-        return "⚠️ No GROQ_API_KEY found. Add it in Streamlit Cloud → Settings → Secrets."
+        return "⚠️ No ANTHROPIC_API_KEY found. Add it in Streamlit Cloud → Settings → Secrets."
 
-    client = Groq(api_key=api_key)
+    client = anthropic.Anthropic(api_key=api_key)
 
     # Build context with hard character cap to prevent token limit errors
     context_text = ""
@@ -123,34 +123,27 @@ SOURCE CONTENT:
 {context_text}
 """
 
-    messages = [{"role": "system", "content": system_prompt}]
+    # Build message history — Anthropic takes system separately
+    messages = []
     for msg in history[-6:]:
-        # Skip messages with missing or empty content to avoid BadRequestError
         role = msg.get("role")
         content = msg.get("content")
         if role in ("user", "assistant") and isinstance(content, str) and content.strip():
             messages.append({"role": role, "content": content})
     messages.append({"role": "user", "content": question})
 
-    response = client.chat.completions.create(
+    response = client.messages.create(
         model=MODEL,
-        messages=messages,
-        temperature=0.3,
         max_tokens=1024,
+        system=system_prompt,
+        messages=messages,
     )
-    return response.choices[0].message.content
+    return response.content[0].text
 
 
 # ── Read title and caption from README.md ──────────────────────────────────
 
 def read_readme() -> tuple[str, str]:
-    """
-    Read title and caption from README.md.
-    Expected format:
-        # Your App Title
-        > Your caption text here
-    Falls back to defaults if README.md is missing or fields not found.
-    """
     default_title   = "🧠 Dr. Childress – Q&A"
     default_caption = "Ask any question in your language and get answers drawn from Dr. Childress's video transcripts and his blog posts."
     try:
@@ -203,7 +196,7 @@ if question := st.chat_input("Ask a question in any language / Pregunta en cualq
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             try:
-                answer = ask_groq(question, results, st.session_state.messages)
+                answer = ask_claude(question, results, st.session_state.messages)
             except Exception as e:
                 answer = f"**Error:** {e}"
         st.markdown(answer)

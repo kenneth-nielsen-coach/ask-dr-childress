@@ -1,4 +1,4 @@
 streamlit
-groq
+anthropic
 sentence-transformers
 numpy
