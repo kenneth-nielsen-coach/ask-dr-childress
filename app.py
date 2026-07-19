@@ -28,7 +28,7 @@ TRANSCRIPTS_DIRS = [
     "childress_substack",      # Substack posts
     "kenneth_tests"            # Kenneth's test folder for new files before adding to main folders
 ]
-MODEL = "claude-sonnet-4-20250514"
+MODEL = "claude-haiku-4-5"     # "claude-sonnet-4-5" // haiku is cheaper and faster, sonnet is more accurate but slower
 EMBED_MODEL = "all-MiniLM-L6-v2"
 TOP_K = 5
 MAX_CONTEXT_CHARS = 6000
@@ -146,7 +146,7 @@ SOURCE CONTENT:
 
 def read_readme() -> tuple[str, str]:
     default_title   = "🧠 Dr. Childress – Q&A"
-    default_caption = "Ask any question in your language and get answers drawn from Dr. Childress's video transcripts and his blog posts."
+    default_caption = "Ask any question in your language and get answers drawn from Dr. Childress's video transcripts, his blogs and substack posts."
     try:
         readme = Path("README.md").read_text(encoding="utf-8")
         title_match   = re.search(r"^#\s+(.+)$", readme, re.MULTILINE)
@@ -178,7 +178,7 @@ st.sidebar.markdown(
     "- 📺 [Dr. Childress YouTube](https://www.youtube.com/@dr.c.a.childress673)\n"
     "- 📝 [Dr. Childress Blog](https://drcraigchildressblog.com)\n"
     "- 📧 [Dr. Childress Substack](https://drcachildress.substack.com)\n"
-    "- 🧪 Kenneth's Test Folder (for new files before adding to main folders)"
+    "- 🧪 Kenneth's Folder (containing files to include in the search.)"
 )
 
 if "messages" not in st.session_state:
