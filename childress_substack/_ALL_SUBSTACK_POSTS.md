@@ -1,7 +1,7 @@
 # Dr. Childress Substack – All Posts
 
 **Site:** https://drcachildress.substack.com  
-**Total posts:** 25  
+**Total posts:** 26  
 
 ---
 
@@ -1850,6 +1850,385 @@ And within the AFCC, the remedy is the one its own interdisciplinary identity al
 That is the shape of the concern: a consequential procedure applied to compelled and vulnerable families; independent findings that it may cause serious harm; a knowledge base its own literature describes as reoriented away from the discipline’s training; an information channel controlled by its beneficiaries; and no independent review, no risk-benefit comparison, and no vulnerable-population protections in forty years. Standard 3.06 exists for exactly this configuration. Whether the standard has been met is a question for independent review — which is, in the end, the very thing the concern says is missing.
 
 Claude Fable & Dr. Childress
+
+---
+
+## Notice to Parents and Now-Adult Children Regarding the Arizona Licensing-Board Disposition and Remaining Accountability Pathways
+
+**Link:** https://drcachildress.substack.com/p/notice-to-parents-and-now-adult-children  
+**Section:** Newsletter  
+**Date:** 2026-07-24
+
+Dr. Childress & ChatGPT-5.6 Sol
+
+Dr. Childress: Initial Description of the Issues
+In 2025 I took a 4-day AFCC-sponsored course taught by six prominent forensic custody evaluators. Based on the curriculum content, I believed there may have been ethical violations by another psychologist, the six instructors, of multiple ethical Standards of the American Psychological Association - Standards 2.04 - 2.01 - 9.01 - 3.04. 
+My required - mandatory obligations under Standard 1.04 became active, and I sent a letter to each of the instructors making them aware of the ethical concerns.
+
+1.04 Informal Resolution of Ethical Violations 
+ When psychologists believe that there may have been an ethical violation by another psychologist, they attempt to resolve the issue by bringing it to the attention of that individual, if an informal resolution appears appropriate and the intervention does not violate any confidentiality rights that may be involved.
+I don’t have a choice, the Standards of the APA ethics code are mandatory for all psychologists.
+The six AFCC instructors responded with a one-page collective denial of ethical violations that did not substantively address the concerns. The ethical concerns (Standards 2.04, 2.01, 9.01, 3.04) were not properly resolved through informal efforts, and the mandatory requirements of Standard 1.05 became active.
+
+1.05 Reporting Ethical Violations 
+If an apparent ethical violation has substantially harmed or is likely to substantially harm a person or organization and is not appropriate for informal resolution under Standard 1.04, Informal Resolution of Ethical Violations, or is not resolved properly in that fashion, psychologists take further action appropriate to the situation. Such action might include referral to state or national committees on professional ethics, to state licensing boards, or to the appropriate institutional authorities.
+I contacted the APA Ethics Committee (i.e., a national committee on professional ethics) pursuant to my 1.05 obligations. The APA Ethics Committee indicated that they do not review individual matters until after the relevant licensing boards had adjudicated the issues.
+I notified the AFCC Board of Directors (i.e., an appropriate institutional authority) and received no response.
+Pursuant to the instructions of the APA Ethics Committee, I filed licensing board complaints against the six AFCC instructors. 
+One of those matters regarding John (Jack) Moran, Ph.D. in Arizona has just received a screening determination before the AZ Board of Psychologist Examiners, who decided to dismiss the complaint without investigation.
+I have discussed the matter with ChatGPT-5.6 Sol. I have the prompt-response log for this AI consultation discussion. We decided that a notification to parents and now-adult children regarding the AZ licensing board decision is warranted.
+I asked ChatGPT-5.6 Sol to compose the notification statement. AI are precise, and AI can describe things with clarity. I have reviewed the notice statement and I agree with following written notice statement to parents and now-adult children of family court conflict.
+This statement can be uploaded to AI for further discussion.
+
+From ChatGPT-5.6 Sol:
+Notice to Parents and Now-Adult Children Regarding the Arizona Licensing-Board Disposition and Remaining Accountability Pathways
+Dr. Childress & Sol
+Purpose of This Notice
+I am providing this notice to parents and now-adult children who believe they were harmed by forensic custody evaluations, parenting plan evaluations, or related family-court mental health practices.
+This notice describes:
+
+the professional ethics concerns I raised regarding Dr. John Moran and the broader practice of forensic custody evaluations;
+
+the steps I took under Standards 1.04 and 1.05 of the American Psychological Association Ethics Code;
+
+the recent dismissal of my complaint by the Arizona Board of Psychologist Examiners;
+
+what that dismissal did and did not resolve; and
+
+the remaining pathways through which affected parents and now-adult children may seek investigation, accountability, and remedy.
+I am a clinical psychologist, not an attorney. This notice does not provide legal advice and does not determine whether any particular legal claim is viable. Those decisions belong to affected individuals and qualified legal counsel.
+The Substantial-Harm Concern
+The underlying concern is not primarily a disagreement between psychologists. The concern is whether children and parents in the family courts are being subjected to professional practices that are dangerous, harmful, scientifically inadequate, and insufficiently regulated.
+The New York Blue-Ribbon Commission on Forensic Custody Evaluations reported that defective evaluation reports may escape meaningful scrutiny and be accepted by courts with “potentially disastrous consequences” for parents and children. The Commission described the process as affected by bias, inequity, lack of standards, discrimination, and due-process concerns. A majority of the Commission favored eliminating forensic custody evaluations entirely, concluding that the reports may be harmful to children, lack scientific or legal value, and may be dangerous in cases involving domestic violence or child abuse.
+These findings represent an independent safety warning regarding the practice of forensic custody evaluations.
+My own professional concerns arise from 15 years of work as a court-involved clinical psychologist and from my current practice providing second-opinion review of mental health reports, including forensic custody evaluations, for attorneys and their parent-clients. In that role, I review the actual reports relied upon by family courts.
+My concerns include the apparent failure to apply relevant established knowledge from:
+
+the DSM diagnostic system;
+
+attachment science;
+
+child abuse and complex-trauma research;
+
+personality-disorder research;
+
+family-systems knowledge;
+
+differential diagnosis; and
+
+established assessment methods.
+My concern is that broad family-court labels such as “parent-child contact problems,” “resist-refuse dynamics,” “estrangement,” or “parental alienation” may be used in place of a proper clinical assessment of the causes of a child’s rejection of a parent.
+A descriptive label does not explain the pathology. A child’s rejection of a parent may require differential assessment for several competing possibilities, including authentic abuse by the rejected parent, psychological control or abuse by the aligned parent, distorted or fixed persecutory beliefs, factitious symptom production, trauma, family-system triangulation, personality pathology, or combinations of these factors.
+Failure to identify the actual cause can produce severe and avoidable harm.
+My Professional Obligations Under Standards 1.04 and 1.05
+Standard 1.04 requires psychologists who believe another psychologist may have committed an ethical violation to attempt an informal resolution when appropriate.
+Standard 1.05 requires further action when an apparent ethical violation has substantially harmed or is likely to substantially harm a person or organization and has not been properly resolved through informal means. Such action may include referral to state or national ethics committees, state licensing boards, or appropriate institutional authorities.
+I first raised the concerns directly with Dr. Moran and the other instructors from the 2025 AFCC-sponsored course. Their response did not substantively resolve the concerns.
+I then provided notice to the AFCC Board of Directors and to the APA Ethics Committee. The APA Ethics Office directed the concerns toward the relevant state licensing boards.
+My complaint to the Arizona Board of Psychologist Examiners was therefore not a discretionary personal grievance. It was part of my effort to fulfill mandatory professional obligations arising from what I believed to be continuing substantial harm.
+Information Provided to the Arizona Board
+The Arizona Board received extensive written information concerning the complaint.
+Before the July 22, 2026 screening meeting, I submitted supplemental materials that included:
+
+my curriculum vitae and description of relevant professional competence;
+
+a Standard 1.05 discharge-of-obligations letter;
+
+an AI-assisted analysis of Dr. Moran’s curriculum vitae;
+
+the AI Vitae Analysis Protocol used in that review; and
+
+an AI debriefing analysis concerning forensic custody evaluation practices.
+The submission email documents that these materials were provided before the Board’s deadline.
+My supplemental letter expressly informed the Board that it had received two separate safety warnings:
+
+the findings of the New York Blue-Ribbon Commission; and
+
+my professional judgment as a licensed clinical psychologist who directly reviews forensic custody evaluations.
+The letter recommended a moratorium on forensic custody evaluations until an independent review could assess the risks and benefits of the practice, compare it with standard clinical diagnostic assessment, and identify protections for the vulnerable population of children and parents in the family courts.
+I also attended the Board’s public Zoom meeting and delivered a five-minute oral statement.
+In that statement I told the committee directly that:
+
+the complaint arose from mandatory Standards 1.04 and 1.05 obligations;
+
+the New York Blue-Ribbon Commission had found forensic custody evaluations dangerous and harmful to children;
+
+a majority of that Commission recommended eliminating the practice;
+
+I agreed with those findings based on my professional experience reviewing these reports;
+
+children and parents in the family courts are a vulnerable population;
+
+forensic custody evaluations have largely operated outside effective licensing-board oversight; and
+
+the matter warranted the Board’s urgent and sustained attention.
+The Board therefore received both written and oral notice of the asserted safety concerns.
+The Arizona Board’s Disposition
+The Arizona Board’s Complaint Screening Committee dismissed the Moran complaint after stating that it found no evidence of a violation of Arizona statutes or rules.
+The dismissal closed the administrative matter. As complainant, I was informed that I had no administrative right of appeal. The dismissal letter directed attention toward consultation with counsel regarding any possible legal remedies.
+The Board did not expressly recommend any particular lawsuit. It nevertheless closed the administrative pathway, denied the complainant an appeal, and directed attention to possible legal remedies.
+In the context of alleged systemic and continuing harm affecting a broad population of parents and children, the Board’s disposition therefore places collective civil litigation among the apparent remaining avenues for meaningful review, compulsory discovery, and potential remedy.
+The Board may not have intended to invite broad civil litigation. Yet by declining further regulatory review, foreclosing administrative appeal, and directing the complainant toward counsel, it transferred the unresolved public-protection issue from professional self-regulation to the legal system.
+What the Dismissal Did Not Resolve
+The dismissal did not publicly determine whether:
+
+forensic custody evaluations are safe;
+
+forensic custody evaluations are scientifically valid or reliable;
+
+the New York Blue-Ribbon Commission’s findings are accurate;
+
+forensic custody evaluations should be eliminated, restricted, or redesigned;
+
+Dr. Moran’s instruction was based on the established scientific and professional knowledge of psychology;
+
+Dr. Moran possessed the necessary competence in attachment pathology or the assessment of delusional thought processes;
+
+the course adequately addressed diagnosis, child abuse, trauma, personality pathology, or family systems;
+
+AFCC’s professional approval process is independent and sufficient;
+
+children and parents in family court receive appropriate protections;
+
+a moratorium or independent review is warranted; or
+
+standard clinical diagnostic assessment would offer a safer and more effective alternative.
+The dismissal also did not provide a publicly articulated analysis of how the two identified safety warnings were evaluated.
+The unresolved question is therefore not whether the Board received notice. It did.
+The unresolved question is:
+
+What substantive assessment, if any, did the Board conduct in response to the expressly delivered safety information before dismissing the complaint?
+The public transcript of the July 22 meeting will become an important part of the documentation record because it will show what the committee discussed, what it did not discuss, what questions were asked, and what reasoning supported the dismissal.
+The Institutional Accountability Barrier
+The professional accountability sequence now appears to be:
+
+informal resolution under Standard 1.04
+→ institutional notice to AFCC
+→ notice to the APA Ethics Committee
+→ APA direction toward state licensing boards
+→ licensing-board dismissal
+→ no administrative appeal
+→ referral toward possible legal remedies
+This sequence raises a larger institutional question.
+Standards 1.04 and 1.05 require psychologists to report and attempt to resolve ethical violations that are producing substantial harm. Those standards identify ethics committees, licensing boards, and institutional authorities as potential recipients of those reports.
+But those duties cannot protect the public if each receiving institution declines to conduct a meaningful investigation.
+The standards may remain binding on the reporting psychologist while their public-protection purpose becomes functionally ineffective.
+This is the institutional concern now presented:
+
+What happens when a psychologist follows every identified professional reporting pathway, provides documented notice of possible substantial harm, and no institution conducts a transparent merits investigation?
+Remaining Accountability Pathways
+The closure of the Arizona licensing complaint does not eliminate other possible pathways.
+1. Independent Legal Consultation
+Parents and now-adult children who believe they were harmed may wish to consult qualified attorneys regarding possible legal remedies.
+Because the asserted harm is systemic and affects a broad population, collective civil litigation—including possible class-based litigation—appears to be one potential mechanism capable of examining the wider institutional pattern, obtaining compulsory discovery, and seeking collective relief.
+Possible legal questions may include:
+
+whether affected families share sufficiently common injuries or institutional practices;
+
+whether state-specific or coordinated actions are more appropriate than one national case;
+
+what immunities, limitation periods, jurisdictional barriers, or procedural requirements apply;
+
+whether claims may exist against individual evaluators, professional organizations, regulators, or other institutions;
+
+whether declaratory or injunctive relief is available;
+
+and whether the existing documentation supports further legal investigation.
+No conclusion is offered here regarding the viability of any lawsuit. That determination requires review by qualified counsel representing actual parents and now-adult children.
+2. Arizona Legislative Oversight
+The Arizona Board of Psychologist Examiners exercises authority delegated by the state.
+Arizona parents and now-adult children may wish to contact their state legislators and request oversight of the Board’s complaint-screening and public-protection procedures.
+The purpose of legislative oversight would not be to ask legislators to decide whether Dr. Moran committed an ethical violation. The purpose would be to ask whether the Board adequately performed its public-protection function after receiving two independent safety warnings.
+Questions for legislative review may include:
+
+What evidence did the committee examine?
+
+Did the committee review the New York Blue-Ribbon Commission report?
+
+Did it review all supplemental materials?
+
+Did it obtain independent expertise?
+
+Did it evaluate the competence evidence?
+
+Did it assess the alleged risks to children?
+
+What threshold does the Board use to open an investigation?
+
+What evidence supported the finding of “no evidence”?
+
+Were conflicts of interest assessed?
+
+Are screening dismissals adequately documented?
+
+Should independent review be required when a complaint concerns an entire professional practice?
+
+Should the legislature require greater transparency or external expertise?
+Legislative staff may conduct their own document review and AI-assisted analysis of the record.
+3. Renewed APA Ethics and Governance Review
+The APA Ethics Committee previously directed the concerns toward state licensing authorities.
+The Arizona process has now concluded without serious disciplinary action.
+That creates a procedural question for APA:
+
+What pathway remains when APA defers to a state licensing board, the licensing board dismisses the matter without a transparent merits investigation, and the absence of state action then prevents further APA review?
+A renewed submission to APA may address:
+
+the completed Arizona disposition;
+
+the apparent accountability gap between APA and state boards;
+
+two AFCC training cohorts across two years;
+
+repeated ethical concerns involving influential forensic custody evaluators;
+
+Standards 2.01, 2.04, 9.01, 3.04, 3.06, 5.04, and related standards;
+
+Institutional Betrayal;
+
+Regulatory Capture;
+
+the Belmont Report;
+
+the New York Blue-Ribbon Commission findings;
+
+and the need for independent institutional review.
+The request should not be limited to discipline against one psychologist. It may appropriately ask whether APA’s ethics and governance structures are capable of responding to a systemic professional-practice concern.
+4. Independent Human-Protections Review
+The New York findings justify a request for an independent, multidisciplinary review of forensic custody evaluations.
+The proposed review would be structured according to human-subject protection principles and could be jointly supported by the American Psychological Association and relevant federal human-research-protection expertise.
+The review should address:
+
+whether forensic custody evaluations should be eliminated;
+
+whether a moratorium is warranted pending review;
+
+their demonstrated risks and benefits;
+
+their reliability and validity;
+
+their effect in child-abuse and domestic-violence cases;
+
+comparison with standard clinical diagnostic assessment;
+
+informed consent and coercion;
+
+conflicts of interest;
+
+due-process concerns;
+
+adverse-event reporting;
+
+mechanisms for correcting defective reports;
+
+and special protections for children and parents in family court.
+The central question is simple:
+
+Why continue relying on a practice independently described as dangerous and harmful to children without obtaining an authoritative, independent answer regarding its safety and appropriate use?
+5. Center for Institutional Courage
+The Center for Institutional Courage, founded by Jennifer Freyd, studies Institutional Betrayal and the conditions required for institutional accountability, transparency, truth-seeking, and repair.
+The Moran record may provide a bounded case study of possible Institutional Betrayal:
+
+vulnerable people depend on courts and professional regulators;
+
+a trusted institution is given notice of possible harm;
+
+the institution has the authority to investigate;
+
+the institution closes the matter without a publicly articulated substantive analysis;
+
+and the burden of seeking review is returned to the affected population.
+Parents and now-adult children may wish to support outreach seeking consultation, research collaboration, policy analysis, or assistance applying the institutional-courage framework to family-court psychology regulation.
+6. Investigative Journalism and Public Documentation
+The Moran record may also warrant review by investigative journalists with experience in public agencies, regulatory failure, child protection, professional conflicts of interest, or institutional abuse.
+The relevant question is not simply whether one complaint was dismissed. It is whether professional and regulatory institutions have repeatedly received credible safety information concerning forensic custody evaluations and failed to investigate the practice adequately.
+A complete documentation repository can allow journalists to examine:
+
+chronology;
+
+correspondence;
+
+ethics notifications;
+
+course materials;
+
+complaint records;
+
+Board submissions;
+
+oral testimony;
+
+dismissal documents;
+
+public transcripts;
+
+professional affiliations;
+
+citation and editorial networks;
+
+and patterns across multiple state licensing boards.
+The Importance of Preserving Records
+Parents and now-adult children who believe they were harmed should consider preserving their own documentation.
+Potentially relevant records may include:
+
+forensic custody evaluations;
+
+parenting plan evaluations;
+
+psychological reports;
+
+treatment records;
+
+court orders;
+
+hearing transcripts;
+
+declarations;
+
+billing records;
+
+correspondence with evaluators;
+
+licensing-board complaints and responses;
+
+records of attempted appeals or corrections;
+
+evidence of recommendations that were not followed;
+
+records of parent-child contact before and after professional intervention;
+
+and documentation of psychological, relational, financial, or developmental harm.
+Records should be retained in their original form whenever possible.
+AI can assist with chronology, comparison, indexing, and analysis, but the original source records remain the primary evidence.
+My Role
+My role is to provide clinical and professional analysis, fulfill my own ethical obligations, preserve the documentation record, and inform affected parents and now-adult children of the institutional response and apparent remaining pathways.
+I am not deciding whether any individual should file a lawsuit, contact a legislator, speak publicly, or pursue any other action.
+Those decisions belong to the affected individuals, their attorneys, their elected representatives, and the institutions receiving the information.
+My professional position is:
+
+I followed the available ethical reporting pathways because I believed substantial harm was occurring. Those pathways have not produced a substantive investigation of the identified safety concerns. The parents and now-adult children who may be experiencing that harm should now be informed of the documented institutional sequence and of the apparent remaining avenues through which they may seek review, accountability, and remedy.
+Closing Statement
+The Arizona dismissal did not resolve whether forensic custody evaluations are dangerous or harmful to children. It did not resolve whether the practice is scientifically valid. It did not resolve whether the reports are defective, whether the practice should be eliminated, or whether children and parents require additional protections.
+It closed one regulatory complaint.
+The larger public-protection questions remain unanswered.
+The documentation record should now be preserved and made available for appropriate review by:
+
+affected parents and now-adult children;
+
+qualified legal counsel;
+
+Arizona legislators and oversight staff;
+
+the APA Ethics Committee and APA governance;
+
+independent human-protections experts;
+
+the Center for Institutional Courage;
+
+and responsible investigative journalists.
+The next phase is no longer solely a complaint against one psychologist.
+It is an examination of whether the institutions responsible for protecting the public are willing and able to investigate credible warnings that a professional practice may be dangerous and harmful to children.
+
+Craig Childress & ChatGPT-5.6 Sol
 
 ---
 
