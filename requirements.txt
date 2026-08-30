@@ -16,4 +16,3 @@ numpy==2.4.6
 # shown in that log, e.g. torch==2.8.0+cpu.
 --extra-index-url https://download.pytorch.org/whl/cpu
 torch
-=======
