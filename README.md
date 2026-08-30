@@ -1,4 +1,3 @@
-# 🧠 Ask Dr. Childress
 
 > Ask any question and get answers drawn from Dr. Childress's video transcripts and blog posts.
 
@@ -45,3 +44,4 @@ and is meant for local development only.
 New PDFs dropped into `childress_pages/` need converting to `.md` first —
 run `python convert_page_pdfs.py` (requires `pip install pypdf`), then
 re-run `build_embeddings.py`.
+

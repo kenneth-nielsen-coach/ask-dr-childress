@@ -1,11 +1,3 @@
-"""
-Dr. Childress Transcript Chatbot
----------------------------------
-Free stack:
-  - Anthropic Claude API for LLM
-  - sentence-transformers (free) for embeddings
-  - numpy cosine similarity (no ChromaDB needed)
-  - Streamlit Cloud (free) for hosting
 
 Setup:
   1. Add ANTHROPIC_API_KEY to Streamlit Cloud secrets
@@ -153,6 +145,7 @@ LANGUAGE RULE: Detect the language of the user's question and respond in that sa
 
 # ── Read title and caption from README.md ──────────────────────────────────
 
+
 def read_readme() -> tuple[str, str]:
     default_title   = "🧠 Dr. Childress – Q&A"
     default_caption = "Ask any question in your language and get answers drawn from Dr. Childress's video transcripts, his blogs and substack posts."
@@ -213,3 +206,4 @@ if question := st.chat_input("Ask a question in any language / Pregunta en cualq
         st.markdown(answer)
 
     st.session_state.messages.append({"role": "assistant", "content": answer})
+
