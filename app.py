@@ -1,4 +1,4 @@
-
+"""
 Setup:
   1. Add ANTHROPIC_API_KEY to Streamlit Cloud secrets
   2. Put transcript .md files in ./childress_transcripts/ (subfolders OK)
@@ -206,4 +206,3 @@ if question := st.chat_input("Ask a question in any language / Pregunta en cualq
         st.markdown(answer)
 
     st.session_state.messages.append({"role": "assistant", "content": answer})
-

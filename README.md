@@ -7,7 +7,7 @@ This app answers questions based on content from [Dr. Craig Childress](https://w
 The worlds leading clinical psychologist specializing in parental alienation and attachment-based family therapy.
 This is a collection of transcrips for the videos that Dr. Childress has published
 on his youtube channel: https://www.youtube.com/@dr.c.a.childress673 
-and it also includes  the his blog https://drcraigchildressblog.com/
+and it also include the his blog https://drcraigchildressblog.com/
 and his substack https://drchildress.substack.com/
 
 Try using this to find the video where he talks about a topic that your question adresses:
@@ -18,7 +18,7 @@ https://ask-dr-childress.streamlit.app/
 
 - 📺 [YouTube channel](https://www.youtube.com/@dr.c.a.childress673)
 - 📝 [Blog](https://drcraigchildressblog.com)
--  [substack](https://drchildress.substack.com/)
+-    [substack](https://drchildress.substack.com/)
 - 📄 Papers and book chapters (`childress_papers/`)
 - 🌐 Consulting site pages (`childress_pages/`) — converted from PDF with `convert_page_pdfs.py`
 
