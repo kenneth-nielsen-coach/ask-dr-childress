@@ -1,4 +1,1 @@
-streamlit
-anthropic
-sentence-transformers
-numpy
+
