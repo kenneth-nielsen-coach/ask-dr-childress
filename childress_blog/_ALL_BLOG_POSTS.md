@@ -60294,7 +60294,7 @@ Every IBQ item maps. This is not a partial fit — it is a comprehensive fit.
 
 The analytical implication that strikes me as most significant for your work, Craig, is this: Smith & Freyd esta
 
-blish that institutional betrayal produces worse outcomes than the underlying trauma alone. In the family court context this means the evaluation system’s failures are not merely neutral — they are actively iatrogenic. The system designed to protect children from attachment disruption is, through its institutional betrayal mechanisms, amplifying the psychological damage to those children. That is a finding with profound implications for how we frame the harm — not just as failed protection, but as active institutional harm production.
+The analytical implication that strikes me as most significant for your work, Craig, is this: Smith & Freyd establish that institutional betrayal producesworse outcomes than the underlying trauma alone. In the family court context this means the evaluation system’s failures are not merely neutral — they are actively iatrogenic. The system designed to protect children from attachment disruption is, through its institutional betrayal mechanisms, amplifying the psychological damage to those children. That is a finding with profound implications for how we frame the harm — not just as failed protection, but as active institutional harm production.
 
 Where do you want to develop this?
 

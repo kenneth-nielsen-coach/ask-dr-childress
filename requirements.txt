@@ -1,4 +1,18 @@
-streamlit
-anthropic
-sentence-transformers
-numpy
+# Pinned so Streamlit Cloud rebuilds are deterministic and reuse pip's wheel
+# cache instead of re-resolving "latest" from scratch on every cold start.
+streamlit==1.62.0
+anthropic==1.2.0
+sentence-transformers==6.0.0
+numpy==2.4.6
+
+# sentence-transformers depends on torch, and a plain `pip install torch`
+# pulls the CUDA-enabled build — several GB of nvidia-* packages that this
+# app, running on Streamlit Cloud's CPU-only free tier, never uses. The line
+# below adds PyTorch's CPU-only wheel index; because those wheels carry a
+# "+cpu" local version suffix, which PEP 440 sorts as *newer* than the
+# plain version, pip picks the ~200MB CPU wheel over the ~3GB CUDA one
+# without needing to pin an exact version. If a future deploy log shows it
+# still grabbing the CUDA build, pin torch explicitly to the +cpu version
+# shown in that log, e.g. torch==2.8.0+cpu.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
