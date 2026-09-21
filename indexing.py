@@ -9,10 +9,17 @@ avoids the two ever drifting apart.
 
 import glob
 import os
+import re
 
 EMBED_MODEL = "all-MiniLM-L6-v2"
 CHUNK_SIZE = 800
 CHUNK_OVERLAP = 100
+
+# Matches sentence boundaries: a run of ., ?, or ! followed by whitespace.
+# Deliberately simple (no abbreviation handling) — good enough for splitting
+# transcript/blog prose, and a slightly-off boundary here and there is much
+# less harmful than cutting a chunk mid-sentence every single time.
+_SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
 
 TRANSCRIPTS_DIRS = [
     "childress_transcripts",   # YouTube transcripts
@@ -72,11 +79,80 @@ def parse_file(path: str) -> tuple[dict, str]:
     return metadata, body
 
 
-def chunk_text(text: str, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) -> list[str]:
+def _split_sentences(paragraph: str) -> list[str]:
+    """Split one paragraph into sentences, falling back to the whole
+    paragraph if the regex finds no boundaries (e.g. it's one long run-on
+    line, as some transcript segments are)."""
+    sentences = _SENTENCE_END.split(paragraph.strip())
+    return [s for s in sentences if s]
+
+
+def _hard_split(text: str, size: int, overlap: int) -> list[str]:
+    """Last-resort fixed-character split, only used for a single sentence
+    or paragraph that's still too long to fit in one chunk on its own."""
     chunks, start = [], 0
     while start < len(text):
         chunks.append(text[start:start + size])
         start += size - overlap
+    return chunks or [text]
+
+
+def chunk_text(text: str, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) -> list[str]:
+    """
+    Split text into chunks close to `size` characters, but breaking on
+    paragraph and sentence boundaries wherever possible instead of cutting
+    mid-sentence. This keeps each chunk a coherent, self-contained unit of
+    meaning, which improves both embedding quality (MiniLM embeds a
+    complete thought better than a fragment) and what ends up in Claude's
+    context (no half-sentences at chunk edges).
+
+    Sentences are accumulated into a chunk until adding the next one would
+    exceed `size`; the chunk is then closed and a new one started, carried
+    over with the last `overlap` characters of the previous chunk so
+    context isn't lost across the boundary. A single sentence longer than
+    `size` (rare, but some transcript lines run on) falls back to a hard
+    character split just for that sentence.
+    """
+    paragraphs = [p.strip() for p in re.split(r"\n\s*\n", text) if p.strip()]
+    if not paragraphs:
+        return [text] if text.strip() else []
+
+    units = []
+    for paragraph in paragraphs:
+        units.extend(_split_sentences(paragraph))
+        units.append("")  # paragraph-break marker, joined as a blank line below
+
+    chunks: list[str] = []
+    current = ""
+    for unit in units:
+        piece = "\n\n" if unit == "" else unit
+        candidate = f"{current} {piece}".strip() if current and piece != "\n\n" else current + piece
+
+        if len(unit) > size:
+            # One oversized sentence: flush what we have, hard-split the
+            # sentence on its own, and carry on.
+            if current.strip():
+                chunks.append(current.strip())
+                current = ""
+            chunks.extend(_hard_split(unit, size, overlap))
+            continue
+
+        if len(candidate) > size and current.strip():
+            chunks.append(current.strip())
+            # Carry the tail of the previous chunk forward for overlap,
+            # trimmed to the next whitespace boundary so it doesn't start
+            # mid-word (the raw slice can land inside a word, or just
+            # after a paragraph-break newline).
+            tail = current[-overlap:] if overlap > 0 else ""
+            ws = re.search(r"\s", tail)
+            tail = tail[ws.end():] if ws else ""
+            current = f"{tail} {unit}".strip() if unit else tail
+        else:
+            current = candidate
+
+    if current.strip():
+        chunks.append(current.strip())
+
     return chunks or [text]
 
 

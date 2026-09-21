@@ -202,6 +202,33 @@ def vtt_time_to_seconds(t: str) -> int:
     return 0
 
 
+def _merge_overlap_words(tail_words: list[str], new_words: list[str], max_overlap: int = 20) -> list[str]:
+    """
+    Strip the leading words of `new_words` that duplicate the trailing
+    words of `tail_words`, and return only the genuinely new words.
+
+    YouTube's auto-generated captions render as a rolling window: each VTT
+    cue repeats the last several words of the previous cue before adding
+    new ones (so cue N+1 isn't new content, it's "tail of cue N" + "a few
+    new words"). The old exact-duplicate-line check only catches a cue
+    that is *entirely* identical to the previous one, which almost never
+    happens — the far more common case is a partial overlap, which slipped
+    through and produced transcripts where roughly half the words were
+    duplicated (e.g. "...coffee with Dr. Sunday morning coffee with Dr.
+    Childress. So today I'm going to be Childress. So today I'm going to
+    be talking about..."). This finds the longest run where the end of
+    what's already been kept matches the start of the new cue, and drops
+    that duplicated run.
+    """
+    if not tail_words or not new_words:
+        return new_words
+    max_check = min(len(tail_words), len(new_words), max_overlap)
+    for overlap_len in range(max_check, 0, -1):
+        if tail_words[-overlap_len:] == new_words[:overlap_len]:
+            return new_words[overlap_len:]
+    return new_words
+
+
 def vtt_to_clean_text(vtt: str, video_url: str = "") -> str:
     """
     Convert VTT subtitle format to readable text with timestamp markers.
@@ -246,12 +273,21 @@ def vtt_to_clean_text(vtt: str, video_url: str = "") -> str:
     result = []
     last_stamp_seconds = -STAMP_INTERVAL
     last_text = ""
+    tail_words: list[str] = []   # trailing words already kept, for overlap detection
 
     for seconds, text in segments:
         # Skip duplicate lines (YouTube repeats lines in VTT)
         if text == last_text:
             continue
         last_text = text
+
+        # Strip the rolling-caption overlap: keep only the words in this
+        # cue that aren't already a repeat of the tail of the previous one.
+        new_words = _merge_overlap_words(tail_words, text.split())
+        if not new_words:
+            # Fully absorbed into what's already been kept — nothing new
+            # to add for this cue, but it can still anchor a timestamp.
+            pass
 
         # Insert timestamp marker if enough time has passed
         if seconds - last_stamp_seconds >= STAMP_INTERVAL:
@@ -269,10 +305,13 @@ def vtt_to_clean_text(vtt: str, video_url: str = "") -> str:
             result.append(stamp)
             last_stamp_seconds = seconds
 
-        result.append(text)
+        if new_words:
+            result.append(" ".join(new_words))
+            tail_words = (tail_words + new_words)[-40:]
 
     text = " ".join(result)
-    # Collapse repeated phrases
+    # Backstop: collapse any remaining repeated phrase (e.g. duplication
+    # that spans more than the ~20-word overlap window above).
     text = re.sub(r"(\b.{10,80}\b) \1", r"\1", text)
     return text.strip()
 

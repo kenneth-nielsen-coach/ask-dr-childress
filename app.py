@@ -16,9 +16,9 @@ from sentence_transformers import SentenceTransformer
 
 from indexing import EMBED_MODEL, build_corpus
 
-MODEL = "claude-haiku-4-5"     # "claude-sonnet-4-5" // haiku is cheaper and faster, sonnet is more accurate but slower
-TOP_K = 5
-MAX_CONTEXT_CHARS = 6000
+MODEL = "claude-sonnet-4-5"    # "claude-haiku-4-5" // sonnet gives deeper, more accurate synthesis; haiku is cheaper and faster
+TOP_K = 12
+MAX_CONTEXT_CHARS = 18000
 
 # Chunks scoring below this cosine similarity are treated as "not actually
 # about the question" and left out of Claude's context, so it says it
@@ -118,6 +118,14 @@ def ask_claude(question: str, context_chunks: list[dict], history: list) -> str:
 
 Your sources include YouTube video transcripts (with timestamps), blog posts, and Substack articles. Answer clearly and accurately using only the content provided. If the source content below is empty or doesn't address the question, say plainly that you couldn't find anything from Dr. Childress on that topic — do not answer from general knowledge or guess.
 
+DEPTH AND PRECISION:
+- Give a thorough, well-developed answer, not a short summary. Aim to actually teach the concept, not just gesture at it.
+- Synthesize across ALL the relevant source passages provided below, not just the first or most obvious one — different passages often cover different facets of the same topic, and a good answer draws connections between them.
+- Explain the underlying clinical concept or mechanism Dr. Childress is describing (e.g. the attachment dynamic, the psychological process, the diagnostic reasoning), not merely what he said in passing.
+- Where multiple videos, blog posts, or papers address the same topic, say so explicitly and note any differences in framing or emphasis between them.
+- Prefer being concrete: use Dr. Childress's own terminology, examples, and reasoning from the source material rather than paraphrasing it into generic language.
+- If the retrieved passages only partially answer the question, answer the part they do cover thoroughly, and say plainly which part of the question isn't addressed by the available material — don't pad with generic filler to seem complete.
+
 When citing a video, always include the timestamp link in the format [MM:SS](url) so the user can jump directly to that moment. If multiple timestamps are relevant, include them all.
 
 LANGUAGE RULE: Detect the language of the user's question and respond in that same language. The source material is in English — translate your answer into the user's language while keeping any cited titles and URLs in their original English form.
@@ -136,7 +144,7 @@ LANGUAGE RULE: Detect the language of the user's question and respond in that sa
 
     response = client.messages.create(
         model=MODEL,
-        max_tokens=1024,
+        max_tokens=4096,
         system=system_prompt,
         messages=messages,
     )
