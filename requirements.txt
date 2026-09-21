@@ -1,7 +1,7 @@
 # Pinned so Streamlit Cloud rebuilds are deterministic and reuse pip's wheel
 # cache instead of re-resolving "latest" from scratch on every cold start.
 streamlit==1.62.0
-anthropic==1.2.0
+groq
 sentence-transformers==6.0.0
 numpy==2.4.6
 

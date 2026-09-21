@@ -53922,127 +53922,127 @@ The conclusion of the two meta-analyses and the systematic reviews, and the over
 **Category:** Uncategorized  
 **Date:** 2021-08-18
 
-I am appending my vitae in support of three domains of specialized expertise in professional psychology:
+I am appending my vitae in support of three domains of specialized expertise in professional psychology:
 
-1.) Thought disorders and delusional pathology
-
-
-
-
-
+1.) Thought disorders and delusional pathology
 
-2.) Child abuse assessment, diagnosis, and treatment
-
-
-
 
-3.) The attachment system and attachment pathology
-
-
-
 
-Thought Disorders & Delusions
-
-
-
 
-In support of my specialized expertise in the assessment and diagnosis of thought disorders and delusions are 12 years of experience at a major UCLA clinical research project on schizophrenia where I received annual training in the assessment and diagnosis of delusions and thought disorders using the Brief Psychiatric Rating Scale (BPRS) to diagnostic reliability of r=.90 to the co-directors of the Diagnostic Unit at the UCLA-Brentwood VA, Dr. Lukoff and Dr. Ventura.  The entry on my vitae for this work experience while I was at Dr. Nuechterlein’s project at UCLA is:
-
-
-
+
+
+2.) Child abuse assessment, diagnosis, and treatment
+
+
+
+
+3.) The attachment system and attachment pathology
+
+
+
+
+Thought Disorders & Delusions
+
+
+
+
+In support of my specialized expertise in the assessment and diagnosis of thought disorders and delusions are 12 years of experience at a major UCLA clinical research project on schizophrenia where I received annual training in the assessment and diagnosis of delusions and thought disorders using the Brief Psychiatric Rating Scale (BPRS) to diagnostic reliability of r=.90 to the co-directors of the Diagnostic Unit at the UCLA-Brentwood VA, Dr. Lukoff and Dr. Ventura.  The entry on my vitae for this work experience while I was at Dr. Nuechterlein’s project at UCLA is:
+
+
+
 
 9/85 – 9/98  Research Associate
 UCLA Neuropsychiatric Institute
-Principle Investigator: Keith Nuechterlein, Ph.D.
-
-
-
-
-
-
-
+Principle Investigator: Keith Nuechterlein, Ph.D.
 
-Area: Longitudinal study of initial-onset schizophrenia. Received annual training to research and clinical reliability in the rating of psychotic symptoms using the Brief Psychiatric Rating Scale (BPRS).  Managed all aspects of data collection and data processing.
-
-
-
 
-Note that I was trained annually in the rating of delusional and psychotic symptoms using the Brief Psychiatric Rating Scale (BPRS).  Wikipedia describes the BPRS:
-
-
-
 
-From Wikipedia: “The Brief Psychiatric Rating Scale (BPRS) is a rating scale which a clinician or researcher may use to measure psychiatric symptoms such as depression, anxiety, hallucinations and unusual behaviour. The scale is one of the oldest, most widely used scales to measure psychotic symptoms and was first published in 1962.”
-
-
-
 
-From Wikipedia: “An expanded version of the test was created in 1993 by D. Lukoff, Keith H. Nuechterlein, and Joseph Ventura.”[6]
-
-
-
 
-The Expanded version cited by Wikipedia links to a professional reference available online from Drs. Nuechterlein, Ventura, and Lukoff, note the date of the revision – 1993.  Note where I was from 1985-to-1998, i.e., at Dr. Neuchterlein’s UCLA research project being annually trained in the assessment and diagnosis of delusional and thought disorder pathology to an r=.90 diagnostic reliability with the co-directors of the Diagnostic Unit at the UCLA-Brentwood VA and authors of the Expanded BPRS, Dr. Ventura and Dr. Lukoff.  I have considerable professional training, background, and experience in assessing and diagnosing thought disorders and delusional pathology,
-
-
-
 
-Child Abuse Pathology
-
-
-
 
-Regarding my background in child abuse pathology, I served as the Clinical Director for a three-university assessment and treatment center for children ages zero-to-five in the foster care system.  Our primary referral source was Child Protective Services (CPS).  I have personally worked with all four DSM-5 child abuse diagnoses and have led and supervised the multi-disciplinary assessment and treatment of child abuse as the Clinical Director for a three-university treatment center.  The entry for this experience on my vitae is:
-
-
-
 
-10/06 – 6/08:  Clinical Director
-
-
-
+Area: Longitudinal study of initial-onset schizophrenia. Received annual training to research and clinical reliability in the rating of psychotic symptoms using the Brief Psychiatric Rating Scale (BPRS).  Managed all aspects of data collection and data processing.
+
+
+
+
+Note that I was trained annually in the rating of delusional and psychotic symptoms using the Brief Psychiatric Rating Scale (BPRS).  Wikipedia describes the BPRS:
+
+
+
+
+From Wikipedia: “The Brief Psychiatric Rating Scale (BPRS) is a rating scale which a clinician or researcher may use to measure psychiatric symptoms such as depression, anxiety, hallucinations and unusual behaviour. The scale is one of the oldest, most widely used scales to measure psychotic symptoms and was first published in 1962.”
+
+
+
+
+From Wikipedia: “An expanded version of the test was created in 1993 by D. Lukoff, Keith H. Nuechterlein, and Joseph Ventura.”[6]
+
+
+
+
+The Expanded version cited by Wikipedia links to a professional reference available online from Drs. Nuechterlein, Ventura, and Lukoff, note the date of the revision – 1993.  Note where I was from 1985-to-1998, i.e., at Dr. Neuchterlein’s UCLA research project being annually trained in the assessment and diagnosis of delusional and thought disorder pathology to an r=.90 diagnostic reliability with the co-directors of the Diagnostic Unit at the UCLA-Brentwood VA and authors of the Expanded BPRS, Dr. Ventura and Dr. Lukoff.  I have considerable professional training, background, and experience in assessing and diagnosing thought disorders and delusional pathology,
+
+
+
+
+Child Abuse Pathology
+
+
+
+
+Regarding my background in child abuse pathology, I served as the Clinical Director for a three-university assessment and treatment center for children ages zero-to-five in the foster care system.  Our primary referral source was Child Protective Services (CPS).  I have personally worked with all four DSM-5 child abuse diagnoses and have led and supervised the multi-disciplinary assessment and treatment of child abuse as the Clinical Director for a three-university treatment center.  The entry for this experience on my vitae is:
+
+
+
+
+10/06 – 6/08:  Clinical Director
+
+
+
 
 START Pediatric Neurodevelopmental Assessment and Treatment Center
 California State University, San Bernardino
-Institute of Child Development and Family Relations
-
-
-
-
-
-
-
+Institute of Child Development and Family Relations
 
-Clinical director for an early childhood assessment and treatment center providing comprehensive developmental assessment and psychotherapy services to children ages 0-5 years old.  Directed the clinical operations, clinical staff, and the provision of comprehensive psychological assessment and treatment services across clinic-based, home-based, and school-based services. A three-university collaboration with speech and language services through the University of Redlands, occupational therapy through Loma Linda University, and psychology through Calif. State University, San Bernardino.
-
-
-
 
-Attachment System & Attachment Pathology
-
-
-
 
-I have specialty background in Early Childhood Mental Health, ages zero-to-five.  This is a specialty domain of practice because it requires extensive knowledge of brain development in infancy through the first five years of life.  Early Childhood Mental Health specialization requires understanding the neuro-development of each brain system individually (cognitive, language, sensory-motor, emotional, memory, relationship) as well as how they integrate with each other at each developmental period of maturation in the first year of infancy and beyond into all the subsequent maturational changes.
-
-
-
 
-The period of early childhood is directly the developmental period of the child’s early attachment formation to the parent.  With this specialty background, I know two additional diagnostic systems for early childhood besides the DSM-5 and ICD-10, the DC:0-3 which is more attachment sensitive and the DMIC which is stronger with autistic spectrum disorders.  I also know two early childhood attachment therapies, Watch, Wait, and Wonder for infants and Circle of Security for preschool-age children, and I am Certified in Infant Mental Health.
-
-
-
 
-The attachment system is the brain system that governs all aspects of love and bonding throughout the lifespan, including grief and loss.  The attachment system develops its patterns for love-and-bonding during childhood and then we use these internalized patterns for love-and-bonding (attachment) to guide our expectations and our approach to all future love and bonding experiences in adulthood.  The clinical domain of attachment and attachment pathology is Early Childhood Mental Health specialization, and my clinical experience is with children ages zero-to-five in foster care, which is directly attachment pathology.  A child rejecting a parent is a problem in attachment, a problem in the love-and-bonding system of the brain,
-
-
-
 
-I have specialized professional background, training, and expertise in multiple relevant domains of knowledge, 1) thought disorders and delusions, 2) child abuse pathology, and 3) the attachment system and attachment pathology.  I also am trained in family systems therapy (Bowlby, Minuchin, Haley, Madanes, Satir), and I have worked with court-involved family conflict for the past decade, with professional presentations to the American Psychological Association, the Association of Family and Conciliation Courts, an invited presentation at the Erasmus Medical Center in the Netherlands, and an invited presentation to the Law Society of Saskatchewan. 
 
-I have a broad array of directly relevant domains of professional background and experience.
 
-Dr. Childress Vitae:
+Clinical director for an early childhood assessment and treatment center providing comprehensive developmental assessment and psychotherapy services to children ages 0-5 years old.  Directed the clinical operations, clinical staff, and the provision of comprehensive psychological assessment and treatment services across clinic-based, home-based, and school-based services. A three-university collaboration with speech and language services through the University of Redlands, occupational therapy through Loma Linda University, and psychology through Calif. State University, San Bernardino.
+
+
+
+
+Attachment System & Attachment Pathology
+
+
+
+
+I have specialty background in Early Childhood Mental Health, ages zero-to-five.  This is a specialty domain of practice because it requires extensive knowledge of brain development in infancy through the first five years of life.  Early Childhood Mental Health specialization requires understanding the neuro-development of each brain system individually (cognitive, language, sensory-motor, emotional, memory, relationship) as well as how they integrate with each other at each developmental period of maturation in the first year of infancy and beyond into all the subsequent maturational changes.
+
+
+
+
+The period of early childhood is directly the developmental period of the child’s early attachment formation to the parent.  With this specialty background, I know two additional diagnostic systems for early childhood besides the DSM-5 and ICD-10, the DC:0-3 which is more attachment sensitive and the DMIC which is stronger with autistic spectrum disorders.  I also know two early childhood attachment therapies, Watch, Wait, and Wonder for infants and Circle of Security for preschool-age children, and I am Certified in Infant Mental Health.
+
+
+
+
+The attachment system is the brain system that governs all aspects of love and bonding throughout the lifespan, including grief and loss.  The attachment system develops its patterns for love-and-bonding during childhood and then we use these internalized patterns for love-and-bonding (attachment) to guide our expectations and our approach to all future love and bonding experiences in adulthood.  The clinical domain of attachment and attachment pathology is Early Childhood Mental Health specialization, and my clinical experience is with children ages zero-to-five in foster care, which is directly attachment pathology.  A child rejecting a parent is a problem in attachment, a problem in the love-and-bonding system of the brain,
+
+
+
+
+I have specialized professional background, training, and expertise in multiple relevant domains of knowledge, 1) thought disorders and delusions, 2) child abuse pathology, and 3) the attachment system and attachment pathology.  I also am trained in family systems therapy (Bowlby, Minuchin, Haley, Madanes, Satir), and I have worked with court-involved family conflict for the past decade, with professional presentations to the American Psychological Association, the Association of Family and Conciliation Courts, an invited presentation at the Erasmus Medical Center in the Netherlands, and an invited presentation to the Law Society of Saskatchewan. 
+
+I have a broad array of directly relevant domains of professional background and experience.
+
+Dr. Childress Vitae:
 
 Click to access 1-childress-vitae-8-1-21-BI.pdf
 
@@ -54686,362 +54686,362 @@ Clinical Psychologist, CA PSY 18857
 **Category:** Uncategorized  
 **Date:** 2022-02-16
 
-Oregon has filed their answering brief to my appeal of their sanctions for practice in Oregon without a license for a Custody Resolution Method (CRM) consultation report I wrote for CCPI.
- 
-Oregon statues specifically exempt consultation to “organizations or institutions” from Oregon jurisdictional authority. But the Oregon licensing board disregarded Oregon law and sanctioned me for practice in Oregon without a license.
-
-
-
-
-
-
-
- 
-
-
-
-I provided the Conscious Co-Parenting Institute (CCPI) with a consultation report on the CRM data profile they generated from a qualitative research method called Content Analysis and coding of the documented data surrounding the family conflict, such as emails, texts, reports, and court documents.
-
-
-
-
-
-
-
- 
-
-
-
-CRM compiles this mountain of raw data into categories of interest using Content Analysis and coding (“tagging”) the data. CCPI codes for the three Diagnostic Indicators for an attachment-based model of “parental alienation” that I describe in my book, Foundations (Childress, 2015).
-
-
-
-
-
-
-
- 
-
-
-
-My CRM report provides education surrounding the pathology of concern in high-intensity custody conflicts, i.e., a shared persecutory delusion and cross-generational coalition, I review the frequency counts for the various categories of concern, and I render an opinion based on the frequency counts of data coded by CRM.
-
-
-
-
-
-
-
- 
-
-
-
-When significant symptom elevations are indicated by the data, my opinion is that there may be child psychological abuse (i.e., a shared persecutory delusion) and that this possibility should be assessed.
-
-
-
-
-
-
-
- 
-
-
-
-That is all I say. I conducted no assessment. I make no diagnosis. I state that repeatedly in my CRM consultation report – I conducted no assessment and I make no diagnosis – the concerns indicated by the CRM data profile need to be assessed. That is all I say.
-
-
-
-
-
-
-
- 
-
-
-
-There was no injured party in the Oregon matter. The child turned 18 and ‘aged-out’ of the court’s jurisdiction for custody before my CRM report could be submitted. My CRM report had no impact on the case because it was never submitted into evidence.
-
-
-
-
-
-
-
- 
-
-
-
-The mother in this matter was not affected. The father in this matter wanted my consultation report from the CRM data profile. There was no injured party. So who filed the licensing board complaint for practice in Oregon without a license?
-
-
-
-
-
-
-
- 
-
-
-
-As a result of my CRM report, the father filed a licensing board complaint against the involved forensic psychologists. The ‘injured’ party was the incompetent and unethical forensic psychologist. The Oregon licensing board opened no investigation of the Oregon forensic psychologist, and instead sanctioned Dr. Childress because my report generated a licensing board complaint against the incompetent and unethical forensic psychologist.
-
-
-
-
-
-
-
- 
-
-
-
-Licensing boards do not protect the consumer from unethical professional practice by forensic psychologists, they protect the unethical forensic psychologists from accountability for their negligent malpractice.
-
-
-
- 
-
-
-
-
-
-
-
-The Oregon licensing board is seeking to cover-up the unethical malpractice of Oregon forensic psychologists.
-
-
-
-
-
-
-
- 
-
-
-
-I am appealing the Oregon board sanctions into the Oregon courts. The licensing boards are controlled by the forensic psychologists, they are covering up for themselves, they are covering up their negligent and unethical malpractice. I am turning to the Oregon courts for a fair and just review of the merits of my position.
-
-
-
-
-
-
-
- 
-
-
-
-So far, my appeal of the Oregon sanctions has cost me $20,000 of my own money in legal fees to fight a $7,500 sanction… for the benefit of parents and your children. We need to expose the corruption of the licensing boards who are covering up the unethical malpractice by forensic psychologists.
-
-
-
-
-
-
-
- 
-
-
-
-Do the right thing. Don’t worry about outcomes. Outcomes will take care of themselves, do the right thing. The right thing to do is to stand and fight. I was not practicing in Oregon, I never met with the parent, I provided consultation to an “organization or institution”, the Conscious Co-Parenting Institute, on a data profile they generated through a qualitative research methodology called Content Analysis and coding (“tagging”).
-
-
-
-
-
-
-
- 
-I will be sharing more information about this matter in upcoming blogs. If, as you learn about this matter, you wish to support me in my battle with the forensic psychologists on the Oregon licensing board – write to the Oregon licensing board expressing your disapproval of sanctions on Dr. Childress rather than a focus on the ignorant, incompetent, and unethical malpractice of Oregon forensic psychologists.
-
-
-
-
-
-
-
- 
-
-
-
-Tell the Oregon board your story of unethical malpractice by forensic psychologists. The first defense of the pathogen is to hide. Not anymore.
-
-
-
-
-
-
-
- 
-
-
-
-I have already spent $20,000 of my own money and the appeals process is just beginning. I don’t know how long I can maintain the financial expense – I will last as long as I can.
-
-
-
-
-
-
-
- 
-
-
-
-You’re costing me money – you and your children. Now is the time. Rise. Stand. Let them hear your voice. Speak your truth to the licensing boards – Standards 2.04, 9.01, 2.01 and failure in their duty to protect. They have obligations, but only if you demand your rights.
-
-
-
-
-
-
-
- 
-
-
-
-Oregon has just filed their answering brief, we will now answer theirs ($$$). My attorney has their response. Here are my observations to my attorney to the Oregon appeal answering brief:
-
-
-
- 
-
-
-
-
-
+Oregon has filed their answering brief to my appeal of their sanctions for practice in Oregon without a license for a Custody Resolution Method (CRM) consultation report I wrote for CCPI.
+ 
+Oregon statues specifically exempt consultation to “organizations or institutions” from Oregon jurisdictional authority. But the Oregon licensing board disregarded Oregon law and sanctioned me for practice in Oregon without a license.
 
-
-
-
-
-
-
-Thank you.
-
-
-
-
-
-
-
- 
-
-
-
-My observations:
-
-
-
-
-
-
-
- 
-
-
-
-1. There was no injured party in Oregon. My report resulted in a licensing Board complaint made by the father against the Oregon forensic psychologist. The only injured party was the forensic psychologist who had a Board complaint filed against them. The forensic psychologists on the Oregon board are retaliating.
-
-
-
-
-
-
-
- 
-
-
-
-2. There is no such thing as a “preliminary diagnosis.” In healthcare, there is a diagnosis and there is no diagnosis. If you tell me a person has hallucinations, delusions, and conceptual disorganization and ask for my opinion, I’ll say “That sounds like it could be schizophrenia, you should have that assessed.” That is not a “preliminary diagnosis”, that is an opinion based on the information presented. In healthcare, there is no such thing as a “preliminary diagnosis”. I conducted no assessment and I made no diagnosis. I said that repeatedly in my report. How much more clear do I need to be – I conducted no assessment and made no diagnosis.
-
-
-
-
-
-
-
- 
-
-
-
-3. Am I allowed to provide a consultation report on a CRM data profile if that CRM data profile is submitted to me by an attorney? Is it only a procedural error on my part in who submitted the CRM report to me? If an attorney had submitted it to me would I have been able to provide a report? Or am I prohibited from providing an opinion on a CRM data profile for an Oregon matter no matter how the CRM data profile is submitted to me?
-
-
-
-
-
-
-
- 
-
-
-
-I have consulted with the Trust malpractice carrier on my future liability because of the Oregon sanctions. As a result of their consultation. I am now declining to provide consultation to any Oregon attorney or parent on any matter, and I will not speak to an Oregon resident even once to even find out what they want to talk to me about, by recommendation of the Trust insurance carrier from my consultation for my risk-management.
-
-
-
-
-
-
-
- 
-
-
-
-I am involved as an expert witness in other cases across the country. Am I allowed to provide an opinion on a CRM data profile in those cases, or is the Oregon Board prohibiting me from providing an opinion on a CRM data profile under any circumstances? If some circumstances are allowed, under what circumstances? Am I allowed to provide an opinion on a CRM data profile if it is submitted to me by an attorney, but just not if it is submitted to me by CCPI? If I am allowed to provide a consultation report to an attorney, what about to a parent who is representing pro se? Am I allowed to provide a consultation report on a CRM data profile to an attorney and Oregon parent representing pro se, but just not to CCPI who generated the data profile? Or am I only allowed to provide a consultation report on a CRM data profile submitted to me by an attorney, not by a parent representing pro se, and not from CCPI who generated the data profile? Or am I prohibited from providing a consultation report on a CRM data profile no matter who submits it to me?
-
-
-
-
-
-
-
- 
-
-
-
-I will need greater clarity on the allowed paths and disallowed paths for submitting a CRM data profile to me, or is the prohibition against my providing a consultation report on a CRM profile absolute no matter how it is submitted to me?
-
-
-
-
-
-
-
- 
-
-
-
-This absence of clarity is affecting custody cases nationally. Note the domain of concern – child psychological abuse. The diagnosis of concern in these cases is a potential DSM-5 diagnosis of Child Psychological Abuse (V995.51). Information about possible child abuse by a parent is being withheld from the court’s consideration in multiple cases nationally because I am prohibited from providing an opinion on a CRM data profile that child psychological abuse is a concern based on the symptoms in the surrounding data and should be assessed.
-
-
-
-
-
-
-
- 
-
-
-
-Until I have an answer, I have stopped providing consultation to CCPI (which is affecting custody cases nationally) and I have stopped providing any consultation to any Oregon attorney or resident pending further clarification on the allowed and prohibited consultation to CCPI regarding their CRM data profile.
-
-
-
-
-
-
-
- 
-
-
-
-Craig Childress, Psy.D.
-
-
-
+
+
+
+
+
+
+ 
+
+
+
+I provided the Conscious Co-Parenting Institute (CCPI) with a consultation report on the CRM data profile they generated from a qualitative research method called Content Analysis and coding of the documented data surrounding the family conflict, such as emails, texts, reports, and court documents.
+
+
+
+
+
+
+
+ 
+
+
+
+CRM compiles this mountain of raw data into categories of interest using Content Analysis and coding (“tagging”) the data. CCPI codes for the three Diagnostic Indicators for an attachment-based model of “parental alienation” that I describe in my book, Foundations (Childress, 2015).
+
+
+
+
+
+
+
+ 
+
+
+
+My CRM report provides education surrounding the pathology of concern in high-intensity custody conflicts, i.e., a shared persecutory delusion and cross-generational coalition, I review the frequency counts for the various categories of concern, and I render an opinion based on the frequency counts of data coded by CRM.
+
+
+
+
+
+
+
+ 
+
+
+
+When significant symptom elevations are indicated by the data, my opinion is that there may be child psychological abuse (i.e., a shared persecutory delusion) and that this possibility should be assessed.
+
+
+
+
+
+
+
+ 
+
+
+
+That is all I say. I conducted no assessment. I make no diagnosis. I state that repeatedly in my CRM consultation report – I conducted no assessment and I make no diagnosis – the concerns indicated by the CRM data profile need to be assessed. That is all I say.
+
+
+
+
+
+
+
+ 
+
+
+
+There was no injured party in the Oregon matter. The child turned 18 and ‘aged-out’ of the court’s jurisdiction for custody before my CRM report could be submitted. My CRM report had no impact on the case because it was never submitted into evidence.
+
+
+
+
+
+
+
+ 
+
+
+
+The mother in this matter was not affected. The father in this matter wanted my consultation report from the CRM data profile. There was no injured party. So who filed the licensing board complaint for practice in Oregon without a license?
+
+
+
+
+
+
+
+ 
+
+
+
+As a result of my CRM report, the father filed a licensing board complaint against the involved forensic psychologists. The ‘injured’ party was the incompetent and unethical forensic psychologist. The Oregon licensing board opened no investigation of the Oregon forensic psychologist, and instead sanctioned Dr. Childress because my report generated a licensing board complaint against the incompetent and unethical forensic psychologist.
+
+
+
+
+
+
+
+ 
+
+
+
+Licensing boards do not protect the consumer from unethical professional practice by forensic psychologists, they protect the unethical forensic psychologists from accountability for their negligent malpractice.
+
+
+
+ 
+
+
+
+
+
+
+
+The Oregon licensing board is seeking to cover-up the unethical malpractice of Oregon forensic psychologists.
+
+
+
+
+
+
+
+ 
+
+
+
+I am appealing the Oregon board sanctions into the Oregon courts. The licensing boards are controlled by the forensic psychologists, they are covering up for themselves, they are covering up their negligent and unethical malpractice. I am turning to the Oregon courts for a fair and just review of the merits of my position.
+
+
+
+
+
+
+
+ 
+
+
+
+So far, my appeal of the Oregon sanctions has cost me $20,000 of my own money in legal fees to fight a $7,500 sanction… for the benefit of parents and your children. We need to expose the corruption of the licensing boards who are covering up the unethical malpractice by forensic psychologists.
+
+
+
+
+
+
+
+ 
+
+
+
+Do the right thing. Don’t worry about outcomes. Outcomes will take care of themselves, do the right thing. The right thing to do is to stand and fight. I was not practicing in Oregon, I never met with the parent, I provided consultation to an “organization or institution”, the Conscious Co-Parenting Institute, on a data profile they generated through a qualitative research methodology called Content Analysis and coding (“tagging”).
+
+
+
+
+
+
+
+ 
+I will be sharing more information about this matter in upcoming blogs. If, as you learn about this matter, you wish to support me in my battle with the forensic psychologists on the Oregon licensing board – write to the Oregon licensing board expressing your disapproval of sanctions on Dr. Childress rather than a focus on the ignorant, incompetent, and unethical malpractice of Oregon forensic psychologists.
+
+
+
+
+
+
+
+ 
+
+
+
+Tell the Oregon board your story of unethical malpractice by forensic psychologists. The first defense of the pathogen is to hide. Not anymore.
+
+
+
+
+
+
+
+ 
+
+
+
+I have already spent $20,000 of my own money and the appeals process is just beginning. I don’t know how long I can maintain the financial expense – I will last as long as I can.
+
+
+
+
+
+
+
+ 
+
+
+
+You’re costing me money – you and your children. Now is the time. Rise. Stand. Let them hear your voice. Speak your truth to the licensing boards – Standards 2.04, 9.01, 2.01 and failure in their duty to protect. They have obligations, but only if you demand your rights.
+
+
+
+
+
+
+
+ 
+
+
+
+Oregon has just filed their answering brief, we will now answer theirs ($$$). My attorney has their response. Here are my observations to my attorney to the Oregon appeal answering brief:
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+Thank you.
+
+
+
+
+
+
+
+ 
+
+
+
+My observations:
+
+
+
+
+
+
+
+ 
+
+
+
+1. There was no injured party in Oregon. My report resulted in a licensing Board complaint made by the father against the Oregon forensic psychologist. The only injured party was the forensic psychologist who had a Board complaint filed against them. The forensic psychologists on the Oregon board are retaliating.
+
+
+
+
+
+
+
+ 
+
+
+
+2. There is no such thing as a “preliminary diagnosis.” In healthcare, there is a diagnosis and there is no diagnosis. If you tell me a person has hallucinations, delusions, and conceptual disorganization and ask for my opinion, I’ll say “That sounds like it could be schizophrenia, you should have that assessed.” That is not a “preliminary diagnosis”, that is an opinion based on the information presented. In healthcare, there is no such thing as a “preliminary diagnosis”. I conducted no assessment and I made no diagnosis. I said that repeatedly in my report. How much more clear do I need to be – I conducted no assessment and made no diagnosis.
+
+
+
+
+
+
+
+ 
+
+
+
+3. Am I allowed to provide a consultation report on a CRM data profile if that CRM data profile is submitted to me by an attorney? Is it only a procedural error on my part in who submitted the CRM report to me? If an attorney had submitted it to me would I have been able to provide a report? Or am I prohibited from providing an opinion on a CRM data profile for an Oregon matter no matter how the CRM data profile is submitted to me?
+
+
+
+
+
+
+
+ 
+
+
+
+I have consulted with the Trust malpractice carrier on my future liability because of the Oregon sanctions. As a result of their consultation. I am now declining to provide consultation to any Oregon attorney or parent on any matter, and I will not speak to an Oregon resident even once to even find out what they want to talk to me about, by recommendation of the Trust insurance carrier from my consultation for my risk-management.
+
+
+
+
+
+
+
+ 
+
+
+
+I am involved as an expert witness in other cases across the country. Am I allowed to provide an opinion on a CRM data profile in those cases, or is the Oregon Board prohibiting me from providing an opinion on a CRM data profile under any circumstances? If some circumstances are allowed, under what circumstances? Am I allowed to provide an opinion on a CRM data profile if it is submitted to me by an attorney, but just not if it is submitted to me by CCPI? If I am allowed to provide a consultation report to an attorney, what about to a parent who is representing pro se? Am I allowed to provide a consultation report on a CRM data profile to an attorney and Oregon parent representing pro se, but just not to CCPI who generated the data profile? Or am I only allowed to provide a consultation report on a CRM data profile submitted to me by an attorney, not by a parent representing pro se, and not from CCPI who generated the data profile? Or am I prohibited from providing a consultation report on a CRM data profile no matter who submits it to me?
+
+
+
+
+
+
+
+ 
+
+
+
+I will need greater clarity on the allowed paths and disallowed paths for submitting a CRM data profile to me, or is the prohibition against my providing a consultation report on a CRM profile absolute no matter how it is submitted to me?
+
+
+
+
+
+
+
+ 
+
+
+
+This absence of clarity is affecting custody cases nationally. Note the domain of concern – child psychological abuse. The diagnosis of concern in these cases is a potential DSM-5 diagnosis of Child Psychological Abuse (V995.51). Information about possible child abuse by a parent is being withheld from the court’s consideration in multiple cases nationally because I am prohibited from providing an opinion on a CRM data profile that child psychological abuse is a concern based on the symptoms in the surrounding data and should be assessed.
+
+
+
+
+
+
+
+ 
+
+
+
+Until I have an answer, I have stopped providing consultation to CCPI (which is affecting custody cases nationally) and I have stopped providing any consultation to any Oregon attorney or resident pending further clarification on the allowed and prohibited consultation to CCPI regarding their CRM data profile.
+
+
+
+
+
+
+
+ 
+
+
+
+Craig Childress, Psy.D.
+
+
+
 Clinical Psychologist, CA PSY 18857
 
 ---

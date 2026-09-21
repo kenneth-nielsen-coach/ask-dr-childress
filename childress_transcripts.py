@@ -97,7 +97,7 @@ def get_channel_playlists(channel_url: str) -> list[dict]:
             if data.get("url"):
                 playlists.append(
                     {
-                        "title": data.get("title", "Unknown playlist"),
+                        "title": data.get("title") or "Unknown playlist",
                         "url": f"https://www.youtube.com/playlist?list={data['id']}"
                         if not data["url"].startswith("http")
                         else data["url"],
@@ -121,13 +121,17 @@ def get_playlist_videos(playlist_url: str) -> list[dict]:
     for line in result.stdout.strip().splitlines():
         try:
             data = json.loads(line)
-            vid_id = data.get("id") or data.get("url", "").split("v=")[-1]
+            vid_id = data.get("id") or (data.get("url") or "").split("v=")[-1]
             videos.append(
                 {
-                    "title": data.get("title", "Unknown title"),
+                    # yt-dlp reports private/deleted/unavailable videos with
+                    # "title": null. The key exists, so .get("title", default)
+                    # returns None instead of the default - keep None here and
+                    # let main() skip those videos.
+                    "title": data.get("title") or None,
                     "url": f"https://www.youtube.com/watch?v={vid_id}",
                     "id": vid_id,
-                    "upload_date": data.get("upload_date", ""),
+                    "upload_date": data.get("upload_date") or "",
                 }
             )
         except json.JSONDecodeError:
@@ -154,20 +158,33 @@ def format_date(yyyymmdd: str) -> str:
     return "Unknown"
 
 
+LAST_DOWNLOAD_ERROR = ""   # why the most recent download_transcript() call found nothing
+
+
 def download_transcript(video_url: str, output_path: Path) -> str | None:
     """
     Download the auto-generated English transcript for a video.
-    Returns the raw transcript text with timestamps, or None if unavailable.
+    Returns the raw transcript text with timestamps, or None if unavailable
+    (the reason is left in LAST_DOWNLOAD_ERROR so main() can show it).
     """
+    global LAST_DOWNLOAD_ERROR
+    LAST_DOWNLOAD_ERROR = ""
+
     tmp_dir = output_path.parent / ".tmp"
     tmp_dir.mkdir(parents=True, exist_ok=True)
     tmp_base = tmp_dir / "transcript"
 
-    subprocess.run(
+    # Never pick up a leftover file from an earlier video.
+    for stale in tmp_dir.glob("*.vtt"):
+        stale.unlink()
+
+    result = subprocess.run(
         YT_DLP + [
             "--skip-download",
             "--write-auto-sub",
-            "--sub-lang", "en",
+            # "en.*" matches en, en-orig, en-US ... Newer videos often carry only the
+            # "en-orig" auto-caption track, which plain "--sub-lang en" does not find.
+            "--sub-langs", "en.*",
             "--sub-format", "vtt",
             "-o", str(tmp_base),
             video_url,
@@ -176,11 +193,19 @@ def download_transcript(video_url: str, output_path: Path) -> str | None:
         text=True,
     )
 
-    vtt_files = list(tmp_dir.glob("*.vtt"))
+    vtt_files = sorted(tmp_dir.glob("*.vtt"))
     if not vtt_files:
+        lines = [ln.strip() for ln in (result.stderr or "").splitlines() if ln.strip()]
+        LAST_DOWNLOAD_ERROR = lines[-1][:140] if lines else "no English captions listed for this video"
         return None
 
-    vtt_text = vtt_files[0].read_text(encoding="utf-8", errors="replace")
+    # Prefer the original-language track, then plain "en", then whatever came back.
+    def rank(p: Path):
+        name = p.name.lower()
+        return (0 if ".en-orig." in name else 1 if ".en." in name else 2, name)
+
+    best = sorted(vtt_files, key=rank)[0]
+    vtt_text = best.read_text(encoding="utf-8", errors="replace")
 
     for f in vtt_files:
         f.unlink()
@@ -200,6 +225,33 @@ def vtt_time_to_seconds(t: str) -> int:
     except ValueError:
         pass
     return 0
+
+
+def _merge_overlap_words(tail_words: list[str], new_words: list[str], max_overlap: int = 20) -> list[str]:
+    """
+    Strip the leading words of `new_words` that duplicate the trailing
+    words of `tail_words`, and return only the genuinely new words.
+
+    YouTube's auto-generated captions render as a rolling window: each VTT
+    cue repeats the last several words of the previous cue before adding
+    new ones (so cue N+1 isn't new content, it's "tail of cue N" + "a few
+    new words"). The old exact-duplicate-line check only catches a cue
+    that is *entirely* identical to the previous one, which almost never
+    happens — the far more common case is a partial overlap, which slipped
+    through and produced transcripts where roughly half the words were
+    duplicated (e.g. "...coffee with Dr. Sunday morning coffee with Dr.
+    Childress. So today I'm going to be Childress. So today I'm going to
+    be talking about..."). This finds the longest run where the end of
+    what's already been kept matches the start of the new cue, and drops
+    that duplicated run.
+    """
+    if not tail_words or not new_words:
+        return new_words
+    max_check = min(len(tail_words), len(new_words), max_overlap)
+    for overlap_len in range(max_check, 0, -1):
+        if tail_words[-overlap_len:] == new_words[:overlap_len]:
+            return new_words[overlap_len:]
+    return new_words
 
 
 def vtt_to_clean_text(vtt: str, video_url: str = "") -> str:
@@ -246,12 +298,21 @@ def vtt_to_clean_text(vtt: str, video_url: str = "") -> str:
     result = []
     last_stamp_seconds = -STAMP_INTERVAL
     last_text = ""
+    tail_words: list[str] = []   # trailing words already kept, for overlap detection
 
     for seconds, text in segments:
         # Skip duplicate lines (YouTube repeats lines in VTT)
         if text == last_text:
             continue
         last_text = text
+
+        # Strip the rolling-caption overlap: keep only the words in this
+        # cue that aren't already a repeat of the tail of the previous one.
+        new_words = _merge_overlap_words(tail_words, text.split())
+        if not new_words:
+            # Fully absorbed into what's already been kept — nothing new
+            # to add for this cue, but it can still anchor a timestamp.
+            pass
 
         # Insert timestamp marker if enough time has passed
         if seconds - last_stamp_seconds >= STAMP_INTERVAL:
@@ -269,10 +330,13 @@ def vtt_to_clean_text(vtt: str, video_url: str = "") -> str:
             result.append(stamp)
             last_stamp_seconds = seconds
 
-        result.append(text)
+        if new_words:
+            result.append(" ".join(new_words))
+            tail_words = (tail_words + new_words)[-40:]
 
     text = " ".join(result)
-    # Collapse repeated phrases
+    # Backstop: collapse any remaining repeated phrase (e.g. duplication
+    # that spans more than the ~20-word overlap window above).
     text = re.sub(r"(\b.{10,80}\b) \1", r"\1", text)
     return text.strip()
 
@@ -353,33 +417,51 @@ def main():
         )
 
         for i, video in enumerate(videos, 1):
-            print(f"  [{i}/{len(videos)}] {video['title'][:60]}...", end=" ", flush=True)
-
-            existing = find_existing_transcript(playlist_folder, video["title"])
-            if existing is not None:
-                print("⏭ already scraped, skipping")
-                entry, had_transcript = master_entry_from_saved(existing, playlist["title"])
-                master_entries.append(entry)
-                total_videos += 1
-                if had_transcript:
-                    total_with_transcript += 1
+            # Private, deleted or otherwise unavailable videos come back from
+            # yt-dlp with no title at all. There is nothing to scrape (and no
+            # sensible filename), so skip them instead of crashing the run.
+            if not video["title"]:
+                print(f"  [{i}/{len(videos)}] (unavailable video {video['id']}, no title) ⏭ skipped")
                 continue
 
-            # Fetch real upload date from YouTube metadata if not in flat playlist
-            if not video["upload_date"]:
-                video["upload_date"] = get_video_upload_date(video["url"])
+            print(f"  [{i}/{len(videos)}] {video['title'][:60]}...", end=" ", flush=True)
 
-            transcript = download_transcript(video["url"], playlist_folder)
+            # One bad video must never stop the rest of the channel from updating.
+            try:
+                existing = find_existing_transcript(playlist_folder, video["title"])
+                if existing is not None:
+                    entry, had_transcript = master_entry_from_saved(existing, playlist["title"])
+                    if had_transcript:
+                        print("⏭ already scraped, skipping")
+                        master_entries.append(entry)
+                        total_videos += 1
+                        total_with_transcript += 1
+                        continue
+                    # The last run only saved a "no transcript" placeholder (for
+                    # example a brand-new video whose captions weren't ready yet).
+                    # Try again now - otherwise it would be skipped as "already
+                    # scraped" forever. The file is re-written below.
+                    print("↻ retrying (no transcript last time)...", end=" ", flush=True)
+                    existing.unlink()
 
-            if transcript:
-                print("✓")
-                total_with_transcript += 1
-            else:
-                print("– no transcript")
+                # Fetch real upload date from YouTube metadata if not in flat playlist
+                if not video["upload_date"]:
+                    video["upload_date"] = get_video_upload_date(video["url"])
 
-            entry = save_transcript(video, transcript, playlist_folder, playlist["title"])
-            master_entries.append(entry)
-            total_videos += 1
+                transcript = download_transcript(video["url"], playlist_folder)
+
+                if transcript:
+                    print("✓")
+                    total_with_transcript += 1
+                else:
+                    reason = f" ({LAST_DOWNLOAD_ERROR})" if LAST_DOWNLOAD_ERROR else ""
+                    print(f"– no transcript{reason}")
+
+                entry = save_transcript(video, transcript, playlist_folder, playlist["title"])
+                master_entries.append(entry)
+                total_videos += 1
+            except Exception as e:
+                print(f"✗ error, skipped: {e}")
 
     # ── Write master file ──────────────────────────────────────────
     master_header = (

@@ -1,6 +1,6 @@
 """
 Setup:
-  1. Add ANTHROPIC_API_KEY to Streamlit Cloud secrets
+  1. Add GROQ_API_KEY to Streamlit Cloud secrets (free key from console.groq.com)
   2. Put transcript .md files in ./childress_transcripts/ (subfolders OK)
   3. Deploy to Streamlit Cloud
 """
@@ -8,20 +8,28 @@ Setup:
 import os
 import re
 import json
-import anthropic
 import numpy as np
 import streamlit as st
+import groq
+from groq import Groq
 from pathlib import Path
 from sentence_transformers import SentenceTransformer
 
 from indexing import EMBED_MODEL, build_corpus
 
-MODEL = "claude-haiku-4-5"     # "claude-sonnet-4-5" // haiku is cheaper and faster, sonnet is more accurate but slower
-TOP_K = 5
-MAX_CONTEXT_CHARS = 6000
+MODEL = "llama-3.3-70b-versatile"   # free on Groq
+TOP_K = 12
+# Groq's free tier limits tokens per minute, and the request counts both the
+# prompt and the requested answer length. The old Groq version used 6000 chars;
+# 9000 chars (~2,300 tokens) gives richer answers while staying well inside it.
+# If you see "rate limit" messages, lower these. If answers feel thin and you
+# never hit limits, raise them gradually.
+MAX_CONTEXT_CHARS = 9000
+MAX_ANSWER_TOKENS = 1500
+MAX_HISTORY_CHARS = 1500    # per earlier message, so long chats don't eat the token budget
 
 # Chunks scoring below this cosine similarity are treated as "not actually
-# about the question" and left out of Claude's context, so it says it
+# about the question" and left out of the model's context, so it says it
 # couldn't find anything instead of answering from a weak/irrelevant match.
 # This is a heuristic for all-MiniLM-L6-v2 — if real questions get rejected
 # that shouldn't be, or weak matches still slip through, tune it up or down.
@@ -59,7 +67,8 @@ def _load_precomputed_index():
     if not manifest_path.exists():
         return None
     try:
-        embeddings = np.load(INDEX_DIR / "embeddings.npy")
+        # Saved as float16 to keep the file small; compute in float32.
+        embeddings = np.load(INDEX_DIR / "embeddings.npy").astype(np.float32)
         chunks = json.loads((INDEX_DIR / "chunks.json").read_text(encoding="utf-8"))
         metadatas = json.loads((INDEX_DIR / "metadatas.json").read_text(encoding="utf-8"))
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -79,19 +88,19 @@ def search(query: str, embedder, embeddings, chunks, metadatas) -> list[dict]:
     return [{"document": chunks[i], "metadata": metadatas[i], "score": scores[i]} for i in top_idx]
 
 
-# ── Claude API call ────────────────────────────────────────────────────────
+# ── Groq LLM call ──────────────────────────────────────────────────────────
 
-def ask_claude(question: str, context_chunks: list[dict], history: list) -> str:
-    api_key = st.secrets.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_API_KEY")
+def ask_groq(question: str, context_chunks: list[dict], history: list) -> str:
+    api_key = st.secrets.get("GROQ_API_KEY") or os.environ.get("GROQ_API_KEY")
     if not api_key:
-        return "⚠️ No ANTHROPIC_API_KEY found. Add it in Streamlit Cloud → Settings → Secrets."
+        return "⚠️ No GROQ_API_KEY found. Add it in Streamlit Cloud → Settings → Secrets."
 
-    client = anthropic.Anthropic(api_key=api_key)
+    client = Groq(api_key=api_key)
 
     # Drop chunks that aren't actually similar enough to the question. Without
     # this, an off-topic or oddly-phrased question still gets its "top 5"
     # chunks stuffed into context regardless of how weak the match is, which
-    # invites Claude to answer from irrelevant material instead of admitting
+    # invites the model to answer from irrelevant material instead of admitting
     # the sources don't cover it.
     relevant_chunks = [c for c in context_chunks if c["score"] >= MIN_SIMILARITY]
 
@@ -118,6 +127,14 @@ def ask_claude(question: str, context_chunks: list[dict], history: list) -> str:
 
 Your sources include YouTube video transcripts (with timestamps), blog posts, and Substack articles. Answer clearly and accurately using only the content provided. If the source content below is empty or doesn't address the question, say plainly that you couldn't find anything from Dr. Childress on that topic — do not answer from general knowledge or guess.
 
+DEPTH AND PRECISION:
+- Give a thorough, well-developed answer, not a short summary. Aim to actually teach the concept, not just gesture at it.
+- Synthesize across ALL the relevant source passages provided below, not just the first or most obvious one — different passages often cover different facets of the same topic, and a good answer draws connections between them.
+- Explain the underlying clinical concept or mechanism Dr. Childress is describing (e.g. the attachment dynamic, the psychological process, the diagnostic reasoning), not merely what he said in passing.
+- Where multiple videos, blog posts, or papers address the same topic, say so explicitly and note any differences in framing or emphasis between them.
+- Prefer being concrete: use Dr. Childress's own terminology, examples, and reasoning from the source material rather than paraphrasing it into generic language.
+- If the retrieved passages only partially answer the question, answer the part they do cover thoroughly, and say plainly which part of the question isn't addressed by the available material — don't pad with generic filler to seem complete.
+
 When citing a video, always include the timestamp link in the format [MM:SS](url) so the user can jump directly to that moment. If multiple timestamps are relevant, include them all.
 
 LANGUAGE RULE: Detect the language of the user's question and respond in that same language. The source material is in English — translate your answer into the user's language while keeping any cited titles and URLs in their original English form.
@@ -125,22 +142,26 @@ LANGUAGE RULE: Detect the language of the user's question and respond in that sa
 {source_block}
 """
 
-    # Build message history — Anthropic takes system separately
-    messages = []
+    # Groq uses the OpenAI-style format: the system prompt is the first message.
+    messages = [{"role": "system", "content": system_prompt}]
     for msg in history[-6:]:
+        # Skip messages with missing or empty content to avoid BadRequestError
         role = msg.get("role")
         content = msg.get("content")
         if role in ("user", "assistant") and isinstance(content, str) and content.strip():
-            messages.append({"role": role, "content": content})
+            messages.append({"role": role, "content": content[:MAX_HISTORY_CHARS]})
     messages.append({"role": "user", "content": question})
 
-    response = client.messages.create(
-        model=MODEL,
-        max_tokens=1024,
-        system=system_prompt,
-        messages=messages,
-    )
-    return response.content[0].text
+    try:
+        response = client.chat.completions.create(
+            model=MODEL,
+            messages=messages,
+            temperature=0.3,
+            max_tokens=MAX_ANSWER_TOKENS,
+        )
+    except groq.RateLimitError:
+        return "⚠️ The free AI service is busy right now (rate limit). Please wait a minute and try again."
+    return response.choices[0].message.content
 
 
 # ── Read title and caption from README.md ──────────────────────────────────
@@ -200,7 +221,7 @@ if question := st.chat_input("Ask a question in any language / Pregunta en cualq
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             try:
-                answer = ask_claude(question, results, st.session_state.messages)
+                answer = ask_groq(question, results, st.session_state.messages)
             except Exception as e:
                 answer = f"**Error:** {e}"
         st.markdown(answer)

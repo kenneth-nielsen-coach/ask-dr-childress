@@ -1,0 +1,7 @@
+# Tools for the local data-update scripts (update-data.bat).
+# These only run on your own PC. They are deliberately NOT in requirements.txt,
+# so Streamlit Cloud never installs them.
+yt-dlp
+requests
+pdfminer.six
+pypdf

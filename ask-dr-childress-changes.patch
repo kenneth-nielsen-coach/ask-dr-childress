@@ -1,0 +1,226 @@
+diff --git a/app.py b/app.py
+index 7f7202c..fe5dcc4 100644
+--- a/app.py
++++ b/app.py
+@@ -16,9 +16,9 @@ from sentence_transformers import SentenceTransformer
+ 
+ from indexing import EMBED_MODEL, build_corpus
+ 
+-MODEL = "claude-haiku-4-5"     # "claude-sonnet-4-5" // haiku is cheaper and faster, sonnet is more accurate but slower
+-TOP_K = 5
+-MAX_CONTEXT_CHARS = 6000
++MODEL = "claude-sonnet-4-5"    # "claude-haiku-4-5" // sonnet gives deeper, more accurate synthesis; haiku is cheaper and faster
++TOP_K = 12
++MAX_CONTEXT_CHARS = 18000
+ 
+ # Chunks scoring below this cosine similarity are treated as "not actually
+ # about the question" and left out of Claude's context, so it says it
+@@ -118,6 +118,14 @@ def ask_claude(question: str, context_chunks: list[dict], history: list) -> str:
+ 
+ Your sources include YouTube video transcripts (with timestamps), blog posts, and Substack articles. Answer clearly and accurately using only the content provided. If the source content below is empty or doesn't address the question, say plainly that you couldn't find anything from Dr. Childress on that topic — do not answer from general knowledge or guess.
+ 
++DEPTH AND PRECISION:
++- Give a thorough, well-developed answer, not a short summary. Aim to actually teach the concept, not just gesture at it.
++- Synthesize across ALL the relevant source passages provided below, not just the first or most obvious one — different passages often cover different facets of the same topic, and a good answer draws connections between them.
++- Explain the underlying clinical concept or mechanism Dr. Childress is describing (e.g. the attachment dynamic, the psychological process, the diagnostic reasoning), not merely what he said in passing.
++- Where multiple videos, blog posts, or papers address the same topic, say so explicitly and note any differences in framing or emphasis between them.
++- Prefer being concrete: use Dr. Childress's own terminology, examples, and reasoning from the source material rather than paraphrasing it into generic language.
++- If the retrieved passages only partially answer the question, answer the part they do cover thoroughly, and say plainly which part of the question isn't addressed by the available material — don't pad with generic filler to seem complete.
++
+ When citing a video, always include the timestamp link in the format [MM:SS](url) so the user can jump directly to that moment. If multiple timestamps are relevant, include them all.
+ 
+ LANGUAGE RULE: Detect the language of the user's question and respond in that same language. The source material is in English — translate your answer into the user's language while keeping any cited titles and URLs in their original English form.
+@@ -136,7 +144,7 @@ LANGUAGE RULE: Detect the language of the user's question and respond in that sa
+ 
+     response = client.messages.create(
+         model=MODEL,
+-        max_tokens=1024,
++        max_tokens=4096,
+         system=system_prompt,
+         messages=messages,
+     )
+diff --git a/childress_transcripts.py b/childress_transcripts.py
+index c3765c7..bdb4e00 100644
+--- a/childress_transcripts.py
++++ b/childress_transcripts.py
+@@ -202,6 +202,33 @@ def vtt_time_to_seconds(t: str) -> int:
+     return 0
+ 
+ 
++def _merge_overlap_words(tail_words: list[str], new_words: list[str], max_overlap: int = 20) -> list[str]:
++    """
++    Strip the leading words of `new_words` that duplicate the trailing
++    words of `tail_words`, and return only the genuinely new words.
++
++    YouTube's auto-generated captions render as a rolling window: each VTT
++    cue repeats the last several words of the previous cue before adding
++    new ones (so cue N+1 isn't new content, it's "tail of cue N" + "a few
++    new words"). The old exact-duplicate-line check only catches a cue
++    that is *entirely* identical to the previous one, which almost never
++    happens — the far more common case is a partial overlap, which slipped
++    through and produced transcripts where roughly half the words were
++    duplicated (e.g. "...coffee with Dr. Sunday morning coffee with Dr.
++    Childress. So today I'm going to be Childress. So today I'm going to
++    be talking about..."). This finds the longest run where the end of
++    what's already been kept matches the start of the new cue, and drops
++    that duplicated run.
++    """
++    if not tail_words or not new_words:
++        return new_words
++    max_check = min(len(tail_words), len(new_words), max_overlap)
++    for overlap_len in range(max_check, 0, -1):
++        if tail_words[-overlap_len:] == new_words[:overlap_len]:
++            return new_words[overlap_len:]
++    return new_words
++
++
+ def vtt_to_clean_text(vtt: str, video_url: str = "") -> str:
+     """
+     Convert VTT subtitle format to readable text with timestamp markers.
+@@ -246,6 +273,7 @@ def vtt_to_clean_text(vtt: str, video_url: str = "") -> str:
+     result = []
+     last_stamp_seconds = -STAMP_INTERVAL
+     last_text = ""
++    tail_words: list[str] = []   # trailing words already kept, for overlap detection
+ 
+     for seconds, text in segments:
+         # Skip duplicate lines (YouTube repeats lines in VTT)
+@@ -253,6 +281,14 @@ def vtt_to_clean_text(vtt: str, video_url: str = "") -> str:
+             continue
+         last_text = text
+ 
++        # Strip the rolling-caption overlap: keep only the words in this
++        # cue that aren't already a repeat of the tail of the previous one.
++        new_words = _merge_overlap_words(tail_words, text.split())
++        if not new_words:
++            # Fully absorbed into what's already been kept — nothing new
++            # to add for this cue, but it can still anchor a timestamp.
++            pass
++
+         # Insert timestamp marker if enough time has passed
+         if seconds - last_stamp_seconds >= STAMP_INTERVAL:
+             mins = seconds // 60
+@@ -269,10 +305,13 @@ def vtt_to_clean_text(vtt: str, video_url: str = "") -> str:
+             result.append(stamp)
+             last_stamp_seconds = seconds
+ 
+-        result.append(text)
++        if new_words:
++            result.append(" ".join(new_words))
++            tail_words = (tail_words + new_words)[-40:]
+ 
+     text = " ".join(result)
+-    # Collapse repeated phrases
++    # Backstop: collapse any remaining repeated phrase (e.g. duplication
++    # that spans more than the ~20-word overlap window above).
+     text = re.sub(r"(\b.{10,80}\b) \1", r"\1", text)
+     return text.strip()
+ 
+diff --git a/indexing.py b/indexing.py
+index 461e8bf..1544627 100644
+--- a/indexing.py
++++ b/indexing.py
+@@ -9,11 +9,18 @@ avoids the two ever drifting apart.
+ 
+ import glob
+ import os
++import re
+ 
+ EMBED_MODEL = "all-MiniLM-L6-v2"
+ CHUNK_SIZE = 800
+ CHUNK_OVERLAP = 100
+ 
++# Matches sentence boundaries: a run of ., ?, or ! followed by whitespace.
++# Deliberately simple (no abbreviation handling) — good enough for splitting
++# transcript/blog prose, and a slightly-off boundary here and there is much
++# less harmful than cutting a chunk mid-sentence every single time.
++_SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
++
+ TRANSCRIPTS_DIRS = [
+     "childress_transcripts",   # YouTube transcripts
+     "childress_blog",          # Blog posts
+@@ -72,7 +79,17 @@ def parse_file(path: str) -> tuple[dict, str]:
+     return metadata, body
+ 
+ 
+-def chunk_text(text: str, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) -> list[str]:
++def _split_sentences(paragraph: str) -> list[str]:
++    """Split one paragraph into sentences, falling back to the whole
++    paragraph if the regex finds no boundaries (e.g. it's one long run-on
++    line, as some transcript segments are)."""
++    sentences = _SENTENCE_END.split(paragraph.strip())
++    return [s for s in sentences if s]
++
++
++def _hard_split(text: str, size: int, overlap: int) -> list[str]:
++    """Last-resort fixed-character split, only used for a single sentence
++    or paragraph that's still too long to fit in one chunk on its own."""
+     chunks, start = [], 0
+     while start < len(text):
+         chunks.append(text[start:start + size])
+@@ -80,6 +97,65 @@ def chunk_text(text: str, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP)
+     return chunks or [text]
+ 
+ 
++def chunk_text(text: str, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) -> list[str]:
++    """
++    Split text into chunks close to `size` characters, but breaking on
++    paragraph and sentence boundaries wherever possible instead of cutting
++    mid-sentence. This keeps each chunk a coherent, self-contained unit of
++    meaning, which improves both embedding quality (MiniLM embeds a
++    complete thought better than a fragment) and what ends up in Claude's
++    context (no half-sentences at chunk edges).
++
++    Sentences are accumulated into a chunk until adding the next one would
++    exceed `size`; the chunk is then closed and a new one started, carried
++    over with the last `overlap` characters of the previous chunk so
++    context isn't lost across the boundary. A single sentence longer than
++    `size` (rare, but some transcript lines run on) falls back to a hard
++    character split just for that sentence.
++    """
++    paragraphs = [p.strip() for p in re.split(r"\n\s*\n", text) if p.strip()]
++    if not paragraphs:
++        return [text] if text.strip() else []
++
++    units = []
++    for paragraph in paragraphs:
++        units.extend(_split_sentences(paragraph))
++        units.append("")  # paragraph-break marker, joined as a blank line below
++
++    chunks: list[str] = []
++    current = ""
++    for unit in units:
++        piece = "\n\n" if unit == "" else unit
++        candidate = f"{current} {piece}".strip() if current and piece != "\n\n" else current + piece
++
++        if len(unit) > size:
++            # One oversized sentence: flush what we have, hard-split the
++            # sentence on its own, and carry on.
++            if current.strip():
++                chunks.append(current.strip())
++                current = ""
++            chunks.extend(_hard_split(unit, size, overlap))
++            continue
++
++        if len(candidate) > size and current.strip():
++            chunks.append(current.strip())
++            # Carry the tail of the previous chunk forward for overlap,
++            # trimmed to the next whitespace boundary so it doesn't start
++            # mid-word (the raw slice can land inside a word, or just
++            # after a paragraph-break newline).
++            tail = current[-overlap:] if overlap > 0 else ""
++            ws = re.search(r"\s", tail)
++            tail = tail[ws.end():] if ws else ""
++            current = f"{tail} {unit}".strip() if unit else tail
++        else:
++            current = candidate
++
++    if current.strip():
++        chunks.append(current.strip())
++
++    return chunks or [text]
++
++
+ def build_corpus() -> tuple[list[str], list[dict], int]:
+     """Read every source file and split it into (chunks, metadatas, file_count)."""
+     files = list_source_files()

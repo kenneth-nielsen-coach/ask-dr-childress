@@ -390,7 +390,7 @@ def main():
     md_files = sorted(PAPERS_DIR.rglob("*.md")) if PAPERS_DIR.exists() else []
 
     print(f"Found {len(pdf_files)} PDF files")
-    print(f"Found {len(md_files)} Markdown papers in '{PAPERS_DIR}'\\n")
+    print(f"Found {len(md_files)} Markdown papers in '{PAPERS_DIR}'\n")
 
     if not pdf_files and not md_files:
         print("No PDF files or Markdown papers found.")

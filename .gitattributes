@@ -1,0 +1,7 @@
+# Line endings: keep these text files LF inside git, even though the scrapers on
+# Windows write them with CRLF. Without this, every re-scrape makes git report
+# hundreds of unchanged files as modified (the only difference is the line endings).
+childress_blog/**         text eol=lf
+childress_substack/**     text eol=lf
+childress_transcripts/**  text eol=lf
+childress_pages/*.md      text eol=lf
