@@ -1,6 +1,6 @@
 {
-  "file_count": 630,
-  "chunk_count": 21054,
+  "file_count": 634,
+  "chunk_count": 21296,
   "embed_model": "all-MiniLM-L6-v2",
   "embeddings_dtype": "float16"
 }
