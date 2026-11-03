@@ -17,9 +17,11 @@ from sentence_transformers import SentenceTransformer
 
 from indexing import EMBED_MODEL, build_corpus
 
-MODEL = "claude-haiku-4-5"     # "claude-sonnet-4-5" // haiku is cheaper and faster, sonnet is more accurate but slower
+MODEL = "llama-3.3-70b-versatile"   # free on Groq
 TOP_K = 5
 MAX_CONTEXT_CHARS = 6000
+MAX_ANSWER_TOKENS = 1500
+MAX_HISTORY_CHARS = 1500    # per earlier message, so long chats don't eat the token budget
 
 # Chunks scoring below this cosine similarity are treated as "not actually
 # about the question" and left out of the model's context, so it says it
@@ -145,13 +147,16 @@ LANGUAGE RULE: Detect the language of the user's question and respond in that sa
             messages.append({"role": role, "content": content[:MAX_HISTORY_CHARS]})
     messages.append({"role": "user", "content": question})
 
-    response = client.messages.create(
-        model=MODEL,
-        max_tokens=1024,
-        system=system_prompt,
-        messages=messages,
-    )
-    return response.content[0].text
+    try:
+        response = client.chat.completions.create(
+            model=MODEL,
+            messages=messages,
+            temperature=0.3,
+            max_tokens=MAX_ANSWER_TOKENS,
+        )
+    except groq.RateLimitError:
+        return "⚠️ The free AI service is busy right now (rate limit). Please wait a minute and try again."
+    return response.choices[0].message.content
 
 
 # ── Read title and caption from README.md ──────────────────────────────────
