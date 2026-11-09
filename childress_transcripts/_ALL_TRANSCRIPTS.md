@@ -3086,7 +3086,7 @@
 
 **Link:** https://www.youtube.com/watch?v=-0enLKm0z9Q  
 **Playlist:** Information for Parents  
-**Date:** 2026-09-28
+**Date:** 2026-09-27
 
 ---
 
@@ -4776,7 +4776,7 @@
 
 **Link:** https://www.youtube.com/watch?v=D-IVC3hQ1Sk  
 **Playlist:** Forensic Custody Evaluations  
-**Date:** 2026-10-12
+**Date:** Unknown
 
 ---
 
@@ -9928,7 +9928,7 @@
 
 **Link:** https://www.youtube.com/watch?v=hb7H7jGXj9Q  
 **Playlist:** Sunday Coffee w/ Dr. Childress  
-**Date:** 2025-01-06
+**Date:** Unknown
 
 ---
 
@@ -13350,7 +13350,7 @@
 
 **Link:** https://www.youtube.com/watch?v=hb7H7jGXj9Q  
 **Playlist:** Parents & Solutions: Alternatives to Custody Evaluations  
-**Date:** 2025-01-06
+**Date:** Unknown
 
 ---
 
